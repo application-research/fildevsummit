@@ -129,7 +129,7 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
             price: '$150',
             backgroundColor: 'white',
             textColor: 'black',
-            name: 'Iceland',
+            name: 'Iceland.',
             description:
               'Apply to attend Iceland FIL Dev Summit from September 25-27, 2023. </br></br> General Admission is $150 for all three days. Early bird tickets are 50% off until August 25.',
             cta: {
