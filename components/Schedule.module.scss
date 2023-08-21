@@ -81,7 +81,7 @@
   font-size: var(--font-size-small);
   height: 200px;
   border: 2px solid var(--color-blue-gray);
-  background: var(--color-white);
+  background: transparent;
   transition: background 200ms ease-in;
 
   &:hover {
@@ -250,11 +250,9 @@
 
   .callToActionText {
     padding-bottom: 1.25rem;
-    color: var(--color-black);
   }
 
   .plusIcon {
-    color: var(--color-black);
     font-weight: var(--font-weight-medium);
   }
 }

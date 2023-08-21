@@ -3,14 +3,16 @@ import { BlockDirectionEnum, BlockTypeEnum, CallToActionVariantEnum, NavigationT
 export const FILECOIN_DEV_SUMMIT_2023_HERO_CONTENT = {
   id: 'hero',
   type: BlockTypeEnum.HERO_NO_BACKGROUND,
-  title: 'FIL Dev Summit',
+  // title: 'FIL Dev Summit',
+  logo: '/media/fil-dev-summit-white-logo.png',
   description:
     "FIL Dev Summit is a gathering of developers, builders, and engaged community members who want to contribute to the core protocol and network evolution of Filecoin (think IPFS Thing, but bigger!). This summit is more than just a meetup—it's a place for meaningful and impactful conversations that help push Filecoin forward. <br><br> Discussions at the summit will cover a wide range of topics, from protocol scalability and network improvements to the intricacies of data onboarding and governance structures.These conversations serve to share and refine improvements - where participants can gain insights from diverse perspectives, challenge assumptions, and collectively arrive at innovative solutions to the challenges faced by the Filecoin ecosystem.",
 };
 
 export const FILECOIN_DEV_SUMMIT_PAGE_STYLE_CONTENT = {
-  backgroundColor: 'var(--color-white)',
-  textColor: 'var(--color-black)',
+  // backgroundColor: 'var(--color-white)',
+  backgroundColor: 'black',
+  textColor: 'var(--color-white)',
 };
 
 export const FIL_DEV_SUMMIT_ICELAND = {
@@ -106,16 +108,17 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
     block: [
       {
         type: BlockTypeEnum.TICKET_CARD,
-        backgroundColor: 'white',
-        textColor: 'black',
+        backgroundColor: 'transparent',
+        textColor: 'white',
+        borderColor: 'white',
         tickets: [
           {
             id: 'media',
             type: BlockTypeEnum.TICKET_CARD,
             price: '$150',
             name: 'Singapore',
-            backgroundColor: 'white',
-            textColor: 'black',
+            backgroundColor: 'transparent',
+            textColor: 'white',
             description:
               'Apply to attend Singapore FIL Dev Summit from September 12-14, 2023. </br></br> General Admission is $150 for all three days. Early bird tickets are 50% off until August 25.',
             cta: {
@@ -132,7 +135,7 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
             type: BlockTypeEnum.TICKET_CARD,
             price: '$150',
             backgroundColor: 'white',
-            textColor: 'black',
+            textColor: 'white',
             name: 'Iceland',
             description:
               'Apply to attend Iceland FIL Dev Summit from September 25-27, 2023. </br></br> General Admission is $150 for all three days. Early bird tickets are 50% off until August 25.',
@@ -148,8 +151,8 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
           {
             id: 'media',
             type: BlockTypeEnum.TICKET_CARD,
-            backgroundColor: 'white',
-            textColor: 'black',
+            backgroundColor: 'transparent',
+            textColor: 'white',
             price: '',
             name: 'Scholars',
             description:
@@ -171,7 +174,7 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
     id: 'singapore',
     direction: BlockDirectionEnum.COLUMN,
     noGutter: 'no',
-    backgroundColor: 'var(--color-white)',
+    backgroundColor: 'transparent',
     block: [
       {
         id: 'media',
@@ -419,9 +422,10 @@ export const FOOTER_FILECOIN_DEV_SUMMIT_CONTENT = {
 
 export const FILECOIN_DEV_SUMMIT_NAVIGATION_CONTENT = {
   type: NavigationTypeEnum.WITH_BORDER,
-  backgroundColor: 'var(--color-white)',
+  backgroundColor: 'var(--color-black)',
   logo: {
-    src: '/media/fildevsummit-logo.png',
+    // src: '/media/fil-dev-summit-white-logo.png',
+    src: '',
     altText: 'FIL Dev Summit Logo',
     link: '/',
   },

@@ -1,18 +1,17 @@
 import styles from '@components/Tickets.module.scss';
 
 import { CallToActionVariant } from './CallToActionVariant';
-import { MarkdownToJSX } from './Markdown';
 import Link from './Link';
 
-export default function Tickets({ backgroundColor, textColor, tickets }) {
+export default function Tickets({ backgroundColor, borderColor, textColor, tickets }) {
   return (
-    <div className={styles.container} style={{ color: textColor ?? 'var(--color-white)', backgroundColor: backgroundColor ?? 'var(--color-black)' }}>
+    <div className={styles.container} style={{ color: textColor ?? 'var(--color-white)', backgroundColor: backgroundColor ?? 'transparent' }}>
       <div className={styles.row}>
         {tickets?.map((ticket, index) => {
           const { cta, description, price, name, img } = ticket ?? null;
 
           return (
-            <div key={index} className={styles.column}>
+            <div key={index} className={styles.column} style={{ border: `1px solid ${borderColor ? borderColor : 'red'}` }}>
               <div className={styles.itemContent}>
                 {img && (
                   <Link href={cta?.link} target="_blank">

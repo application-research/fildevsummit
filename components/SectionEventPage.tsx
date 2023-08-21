@@ -6,7 +6,7 @@ import { FadeInSection } from './FadeInSection';
 
 export default function SectionEventPage({ blocks, pageStyle }: any) {
   return (
-    <div style={{ background: pageStyle?.backgroundColor ?? 'var(--color-white200)', display: 'grid', rowGap: '3rem' }}>
+    <div style={{ background: pageStyle?.backgroundColor ?? 'transparent', display: 'grid', rowGap: '3rem' }}>
       <div className={styles.grid}>
         {blocks.map((blockItems, index) => {
           const { block, border, cta, subtitle, description, direction, id, title, noGutter } = blockItems ?? {};

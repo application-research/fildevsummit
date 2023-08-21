@@ -35,15 +35,20 @@ export default function ScheduleSingapore({ scheduleData }) {
 
   if (!singaporeData) return null;
 
-  const submitTrack = {
-    text: 'submit a track or talk for Singapore',
-    url: 'https://airtable.com/appEjnh5rpWMsjocb/shrw3Ha0yTusDmcOg',
-  };
-
   const emptyDatesToAdd = ['Mon Sep 11 2023 20:00:00 GMT+0900 (Japan Standard Time)', 'Fri Sep 15 2023 20:00:00 GMT+0900 (Japan Standard Time)'];
   const formattedAirtableData = getFormattedAirtableFields(singaporeData);
   const calendarData = calendarDataWithAddedDates(formattedAirtableData, emptyDatesToAdd);
 
+  const speakerStyles = {
+    textColor: 'var(--color-white)',
+    borderColor: 'var(--color-white)',
+  };
+
+  const submitTrack = {
+    textColor: 'var(--color-white)',
+    text: 'submit a track or talk for Singapore',
+    url: 'https://airtable.com/appEjnh5rpWMsjocb/shrw3Ha0yTusDmcOg',
+  };
   return (
     <>
       <div style={{ paddingBottom: '4rem', display: 'grid', rowGap: '3rem' }}>
@@ -53,8 +58,12 @@ export default function ScheduleSingapore({ scheduleData }) {
           <a href={submitTrack.url} className={styles.link} target="_blank">
             <section className={styles.callToAction}>
               <div className={styles.callToActionTextContainer}>
-                <p className={styles.plusIcon}>+</p>
-                <p className={styles.callToActionText}>{submitTrack.text}</p>
+                <p className={styles.plusIcon} style={{ color: submitTrack.textColor ?? 'var(--color-black)' }}>
+                  +
+                </p>
+                <p className={styles.callToActionText} style={{ color: submitTrack.textColor ?? 'var(--color-black)' }}>
+                  {submitTrack.text}
+                </p>
               </div>
             </section>
           </a>
@@ -64,7 +73,7 @@ export default function ScheduleSingapore({ scheduleData }) {
       {speakers.length > 0 && (
         <div style={{ display: 'grid', rowGap: '2rem' }}>
           <h1 style={{ fontSize: 'var(--font-size-large)', fontWeight: 'var(--font-weight-light' }}> Speakers</h1>
-          <Speakers speakers={speakers} />
+          <Speakers speakers={speakers} speakerStyles={speakerStyles} />
         </div>
       )}
     </>

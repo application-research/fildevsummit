@@ -4,7 +4,7 @@ import { CallToActionVariant } from './CallToActionVariant';
 import GutterContainer from './GutterContainer';
 import { MarkdownToJSX } from './Markdown';
 
-export default function Hero({ background, cta, date, description, label, location, title }: any) {
+export default function Hero({ background, cta, logo, date, description, label, location, title }: any) {
   const containerStyle = {
     backgroundImage: background && `url(${background.src})`,
   };
@@ -15,6 +15,7 @@ export default function Hero({ background, cta, date, description, label, locati
         <section className={`${styles.rowGap} ${background && styles.textBackground}`}>
           {label && <p className={styles.label}>{label}</p>}
           {title && <h1 className={styles.title}>{title}</h1>}
+          <img src={logo} style={{ height: '4.5rem' }} />
           {(date || location) && (
             <div style={{ display: 'grid', rowGap: '0.5rem' }}>
               {date && <p className={styles.date}>{date}</p>}

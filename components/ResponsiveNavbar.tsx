@@ -10,7 +10,7 @@ export default function ResponsiveNavbar({ navContent }) {
   const showBorder = navContent.type == NavigationTypeEnum.WITH_BORDER;
 
   return (
-    <nav className={styles.navbar} style={{ borderBottom: showBorder ? '1px solid black' : '', background: navContent?.backgroundColor ?? 'var(--color-white200)' }}>
+    <nav className={styles.navbar} style={{ borderBottom: showBorder ? '1px solid white' : '', background: navContent?.backgroundColor ?? 'var(--color-white200)' }}>
       <GutterContainer>
         <div className={styles.container}>
           <div className={styles.logo}>

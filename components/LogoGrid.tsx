@@ -10,7 +10,7 @@ export default function LogoGrid({ id, logos, text }) {
         <div className={styles.grid}>
           {logos.map((logo, index) => {
             return (
-              <div className={styles.gridItem}>
+              <div className={styles.gridItem} style={{ border: `1px solid white` }}>
                 {logo.href !== null ? (
                   <Link key={index} href={logo.href} target="_blank" className={styles.link}>
                     <Image className={styles.logo} src={logo.src} altText={logo?.altText ?? ''} />
