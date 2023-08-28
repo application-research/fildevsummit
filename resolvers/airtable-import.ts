@@ -155,7 +155,7 @@ export function formatAirtableMetaData({ records, timezone }) {
 export function getTrackDetails(formattedAirtableData, trackSelected) {
   const trackDetails = {};
 
-  formattedAirtableData.forEach((record) => {
+  formattedAirtableData.forEach((record, index) => {
     const { capacity, firstName, tracks, discussionPoints, id, location, order, roomName, startDate, time, title, trackDate, trackDesc, trackSpeakersAndAttendees, trackStatus } =
       record;
 
@@ -165,8 +165,9 @@ export function getTrackDetails(formattedAirtableData, trackSelected) {
       if (trackDate) {
         const formattedDate = formatUTCDateString(trackDate);
 
+        // console.log(trackDetails[`${id} ${index}`], 'track details');
         // Use 'id' as the unique key to avoid overwriting tracks with the same title but different dates
-        if (!trackDetails.hasOwnProperty(id)) {
+        if (!trackDetails.hasOwnProperty(`${id} ${index}`)) {
           trackDetails[id] = {
             capacity,
             discussionPoints,
@@ -187,14 +188,60 @@ export function getTrackDetails(formattedAirtableData, trackSelected) {
       }
     }
   });
-
+  // console.log(trackDetails, 'final track details');
   return trackDetails;
 }
 
-export function getFormattedAirtableFields(formattedAirtableData): any {
+export function getFormattedAirtableFields2(formattedAirtableData): any {
+  console.log(formattedAirtableData, 'all data ');
+
+  const renderedGroupDataObject = {};
+
+  //   const talkRecords.forEach(object => {
+  //   if (!renderedGroupDataObject[object.trackDate]) {
+  //     renderedGroupDataObject[object.trackDate] = [];
+  //   }
+
+  //   renderedGroupDataObject[object.trackDate].push(object);
+  // });
+
+  /*
+    const renderedGroupDataObject = {};
+    const talkRecords.forEach(object => {
+      if (!renderedGroupDataObject[object.trackDate]) {
+        renderedGroupDataObject[object.trackDate] = [];
+      }
+
+      renderedGroupDataObject[object.trackDate].push(object);
+    });
+
+    ^ the above produces
+
+    {
+      'date-1': [objects],
+      'date-2': [objects]
+    }
+
+    Object.keys(renderedGroupDataObject).forEach((key) => {
+      titleMap = {};
+    
+      renderedGroupDataObject[key].map((each) => {
+        // do cleanup
+        if (titleMap[each.title]) {
+          each.title = `each.title-1`;
+        }
+
+        return each;
+      });
+    });
+  */
+
   const groupedData = {};
   const talkRecords = []; // Store all Talk records
+  console.log('final grouped data', groupedData);
 
+  // ('rec4KKamsdzEblAaW');
+  // ('reciWFs5aCww6YJFr');
   formattedAirtableData.forEach((formattedRecord) => {
     const trackDates = getValidDates(formattedRecord.trackDate);
 
@@ -208,8 +255,171 @@ export function getFormattedAirtableFields(formattedAirtableData): any {
               groupedData[formattedDate] = [];
             }
 
-            let existingTrack = groupedData[formattedDate].find((trackData) => trackData.trackDetails.id === formattedRecord.id);
+            let existingTrack = groupedData[formattedDate].find((trackData) => {
+              return console.log(trackData.trackDetails.id, formattedRecord.id, 'trackData.trackDetails.id & formattedRecord.id'), trackData.trackDetails.id === formattedRecord.id;
+            });
+            console.log(existingTrack, 'existing track');
+            if (!existingTrack) {
+              const trackDetailsForTrack = getTrackDetails(formattedAirtableData, formattedRecord.title);
 
+              existingTrack = {
+                title: formattedRecord.title,
+                trackDetails: trackDetailsForTrack[formattedRecord.id],
+                records: [],
+              };
+              groupedData[formattedDate].push(existingTrack);
+            }
+
+            break;
+
+          case 'Talk':
+            // Save 'Talk' records for processing later
+            talkRecords.push(formattedRecord);
+            break;
+
+          default:
+            // Handle other types if necessary
+            break;
+        }
+      }
+    });
+  });
+
+  // Process 'Talk' records
+  talkRecords.forEach((talk) => {
+    const trackDatesForTalk = getValidDates(talk.trackDate);
+
+    trackDatesForTalk.forEach((trackDateForTalk) => {
+      if (trackDateForTalk) {
+        const formattedDateForTalk = formatUTCDateString(trackDateForTalk);
+        const trackForTalk = talk.tracks[0]; //pick the first track for now since the unique talks shows up under 1 track
+
+        if (groupedData.hasOwnProperty(formattedDateForTalk)) {
+          let existingTrackForTalk = groupedData[formattedDateForTalk].find((trackData) => trackData.title === trackForTalk);
+
+          if (existingTrackForTalk) {
+            existingTrackForTalk.records.push(talk);
+          } else {
+            const trackDetailsForTalk = getTrackDetails(formattedAirtableData, trackForTalk);
+            groupedData[formattedDateForTalk].push({
+              title: trackForTalk,
+              trackDetails: trackDetailsForTalk[Object.keys(trackDetailsForTalk)[0]], // there is only 1 track details record for a track
+              records: [talk],
+            });
+          }
+        }
+      }
+    });
+  });
+
+  // Sort the tracks based on their order
+  sortTracksByOrder(groupedData);
+
+  return groupedData;
+}
+
+export function getFormattedAirtableFields(formattedAirtableData): any {
+  // console.log(formattedAirtableData, 'all data ');
+
+  const renderedGroupDataObject = {};
+  const records = [];
+
+  formattedAirtableData.forEach((object) => {
+    if (!renderedGroupDataObject[object.trackDate]) {
+      renderedGroupDataObject[object.trackDate] = [];
+    }
+
+    //categorize the object by talks or track details
+    if (object.type == 'Track') {
+      return renderedGroupDataObject[object.trackDate].push({ trackDetails: object, type: object.type });
+    } else if (object.type == 'Talk') {
+      //return records.push(object, track: object.track);
+
+      return records.push({ object, track: object?.tracks[0] ?? 'undefined', date: object.trackDate });
+      // return renderedGroupDataObject[object.trackDate].push({ records: object, type: object.type });
+    }
+  });
+
+  console.log(renderedGroupDataObject, 'renderedGroupDataObject');
+  console.log(records, 'all talks');
+
+  //group the records to be in the same index as the track
+
+  Object.keys(renderedGroupDataObject).forEach((key) => {
+    renderedGroupDataObject[key].map((each) => {
+      // do cleanup
+      // if (titleMap[each.title]) {
+      //   each.title = `each.title-1`;
+      // }
+
+      if (each.trackDetails) console.log(each, 'each key in renderedGroupDataObject');
+
+      return each;
+    });
+  });
+
+  //   const talkRecords.forEach(object => {
+  //   if (!renderedGroupDataObject[object.trackDate]) {
+  //     renderedGroupDataObject[object.trackDate] = [];
+  //   }
+
+  //   renderedGroupDataObject[object.trackDate].push(object);
+  // });
+
+  /*
+    const renderedGroupDataObject = {};
+    const talkRecords.forEach(object => {
+      if (!renderedGroupDataObject[object.trackDate]) {
+        renderedGroupDataObject[object.trackDate] = [];
+      }
+
+      renderedGroupDataObject[object.trackDate].push(object);
+    });
+
+    ^ the above produces
+
+    {
+      'date-1': [objects],
+      'date-2': [objects]
+    }
+
+    Object.keys(renderedGroupDataObject).forEach((key) => {
+      titleMap = {};
+    
+      renderedGroupDataObject[key].map((each) => {
+        // do cleanup
+        if (titleMap[each.title]) {
+          each.title = `each.title-1`;
+        }
+
+        return each;
+      });
+    });
+  */
+
+  const groupedData = {};
+  const talkRecords = []; // Store all Talk records
+  console.log('final grouped data', groupedData);
+
+  // ('rec4KKamsdzEblAaW');
+  // ('reciWFs5aCww6YJFr');
+  formattedAirtableData.forEach((formattedRecord) => {
+    const trackDates = getValidDates(formattedRecord.trackDate);
+
+    trackDates.forEach((trackDate) => {
+      if (trackDate) {
+        const formattedDate = formatUTCDateString(trackDate);
+
+        switch (formattedRecord.type) {
+          case 'Track':
+            if (!groupedData.hasOwnProperty(formattedDate)) {
+              groupedData[formattedDate] = [];
+            }
+
+            let existingTrack = groupedData[formattedDate].find((trackData) => {
+              return console.log(trackData.trackDetails.id, formattedRecord.id, 'trackData.trackDetails.id & formattedRecord.id'), trackData.trackDetails.id === formattedRecord.id;
+            });
+            console.log(existingTrack, 'existing track');
             if (!existingTrack) {
               const trackDetailsForTrack = getTrackDetails(formattedAirtableData, formattedRecord.title);
 
