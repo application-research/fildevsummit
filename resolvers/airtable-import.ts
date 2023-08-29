@@ -193,7 +193,7 @@ export function getTrackDetails(formattedAirtableData, trackSelected) {
 }
 
 export function getFormattedAirtableFields2(formattedAirtableData): any {
-  console.log(formattedAirtableData, 'all data ');
+  //console.log(formattedAirtableData, 'all data ');
 
   const renderedGroupDataObject = {};
 
@@ -238,7 +238,7 @@ export function getFormattedAirtableFields2(formattedAirtableData): any {
 
   const groupedData = {};
   const talkRecords = []; // Store all Talk records
-  console.log('final grouped data', groupedData);
+  //console.log('final grouped data', groupedData);
 
   // ('rec4KKamsdzEblAaW');
   // ('reciWFs5aCww6YJFr');
@@ -318,166 +318,87 @@ export function getFormattedAirtableFields2(formattedAirtableData): any {
   return groupedData;
 }
 
-export function getFormattedAirtableFields(formattedAirtableData): any {
-  // console.log(formattedAirtableData, 'all data ');
-
+export function getFormattedAirtableFieldsTest(formattedAirtableData): any {
   const renderedGroupDataObject = {};
-  const records = [];
+  const talks = [];
 
   formattedAirtableData.forEach((object) => {
     if (!renderedGroupDataObject[object.trackDate]) {
       renderedGroupDataObject[object.trackDate] = [];
     }
 
-    //categorize the object by talks or track details
+    //categorize the object by talks or track
     if (object.type == 'Track') {
-      return renderedGroupDataObject[object.trackDate].push({ trackDetails: object, type: object.type });
+      return renderedGroupDataObject[object.trackDate].push({ trackDetails: object, date: object.trackDate, title: object.title, type: object.type });
     } else if (object.type == 'Talk') {
       //return records.push(object, track: object.track);
 
-      return records.push({ object, track: object?.tracks[0] ?? 'undefined', date: object.trackDate });
+      return talks.push({ object, track: object?.tracks[0] ?? 'undefined', date: object.trackDate });
       // return renderedGroupDataObject[object.trackDate].push({ records: object, type: object.type });
     }
   });
 
-  console.log(renderedGroupDataObject, 'renderedGroupDataObject');
-  console.log(records, 'all talks');
+  console.log(renderedGroupDataObject, 'all renderedGroupDataObject');
+  console.log(talks, 'all talks');
 
-  //group the records to be in the same index as the track
+  //group the talks to be in the same index as the track
+}
 
-  Object.keys(renderedGroupDataObject).forEach((key) => {
-    renderedGroupDataObject[key].map((each) => {
-      // do cleanup
-      // if (titleMap[each.title]) {
-      //   each.title = `each.title-1`;
-      // }
+export function getFormattedAirtableFields(formattedAirtableData): any {
+  const renderedGroupDataObject = {};
 
-      if (each.trackDetails) console.log(each, 'each key in renderedGroupDataObject');
-
-      return each;
-    });
-  });
-
-  //   const talkRecords.forEach(object => {
-  //   if (!renderedGroupDataObject[object.trackDate]) {
-  //     renderedGroupDataObject[object.trackDate] = [];
-  //   }
-
-  //   renderedGroupDataObject[object.trackDate].push(object);
-  // });
-
-  /*
-    const renderedGroupDataObject = {};
-    const talkRecords.forEach(object => {
+  formattedAirtableData.forEach((object) => {
+    if (object.type === 'Track') {
       if (!renderedGroupDataObject[object.trackDate]) {
         renderedGroupDataObject[object.trackDate] = [];
       }
 
-      renderedGroupDataObject[object.trackDate].push(object);
-    });
-
-    ^ the above produces
-
-    {
-      'date-1': [objects],
-      'date-2': [objects]
-    }
-
-    Object.keys(renderedGroupDataObject).forEach((key) => {
-      titleMap = {};
-    
-      renderedGroupDataObject[key].map((each) => {
-        // do cleanup
-        if (titleMap[each.title]) {
-          each.title = `each.title-1`;
-        }
-
-        return each;
+      renderedGroupDataObject[object.trackDate].push({
+        trackDetails: object,
+        date: object.trackDate,
+        title: object.title,
+        type: object.type,
+        talks: [], // Initialize empty array for talks within each track object
       });
-    });
-  */
-
-  const groupedData = {};
-  const talkRecords = []; // Store all Talk records
-  console.log('final grouped data', groupedData);
-
-  // ('rec4KKamsdzEblAaW');
-  // ('reciWFs5aCww6YJFr');
-  formattedAirtableData.forEach((formattedRecord) => {
-    const trackDates = getValidDates(formattedRecord.trackDate);
-
-    trackDates.forEach((trackDate) => {
-      if (trackDate) {
-        const formattedDate = formatUTCDateString(trackDate);
-
-        switch (formattedRecord.type) {
-          case 'Track':
-            if (!groupedData.hasOwnProperty(formattedDate)) {
-              groupedData[formattedDate] = [];
-            }
-
-            let existingTrack = groupedData[formattedDate].find((trackData) => {
-              return console.log(trackData.trackDetails.id, formattedRecord.id, 'trackData.trackDetails.id & formattedRecord.id'), trackData.trackDetails.id === formattedRecord.id;
-            });
-            console.log(existingTrack, 'existing track');
-            if (!existingTrack) {
-              const trackDetailsForTrack = getTrackDetails(formattedAirtableData, formattedRecord.title);
-
-              existingTrack = {
-                title: formattedRecord.title,
-                trackDetails: trackDetailsForTrack[formattedRecord.id],
-                records: [],
-              };
-              groupedData[formattedDate].push(existingTrack);
-            }
-
-            break;
-
-          case 'Talk':
-            // Save 'Talk' records for processing later
-            talkRecords.push(formattedRecord);
-            break;
-
-          default:
-            // Handle other types if necessary
-            break;
-        }
-      }
-    });
+    }
   });
 
-  // Process 'Talk' records
-  talkRecords.forEach((talk) => {
-    const trackDatesForTalk = getValidDates(talk.trackDate);
+  formattedAirtableData.forEach((object) => {
+    if (object.type === 'Talk') {
+      const trackDate = object.trackDate;
+      const tracksArray = object?.tracks ?? [];
 
-    trackDatesForTalk.forEach((trackDateForTalk) => {
-      if (trackDateForTalk) {
-        const formattedDateForTalk = formatUTCDateString(trackDateForTalk);
-        const trackForTalk = talk.tracks[0]; //pick the first track for now since the unique talks shows up under 1 track
+      tracksArray.forEach((trackName) => {
+        // Find the track by date and title to which this talk belongs
+        const track = renderedGroupDataObject[trackDate]?.find((t) => t.title === trackName);
 
-        if (groupedData.hasOwnProperty(formattedDateForTalk)) {
-          let existingTrackForTalk = groupedData[formattedDateForTalk].find((trackData) => trackData.title === trackForTalk);
-
-          if (existingTrackForTalk) {
-            existingTrackForTalk.records.push(talk);
-          } else {
-            const trackDetailsForTalk = getTrackDetails(formattedAirtableData, trackForTalk);
-            groupedData[formattedDateForTalk].push({
-              title: trackForTalk,
-              trackDetails: trackDetailsForTalk[Object.keys(trackDetailsForTalk)[0]], // there is only 1 track details record for a track
-              records: [talk],
-            });
-          }
+        if (track) {
+          track.talks.push(object); // Add the talk to its corresponding track
+        } else {
+          // Debugging: print out the talks which couldn't find a matching track
+          console.log('Unmatched Talk:', object, 'for track:', trackName);
         }
-      }
-    });
+      });
+    }
   });
 
-  // Sort the tracks based on their order
-  sortTracksByOrder(groupedData);
+  console.log(renderedGroupDataObject, 'all renderedGroupDataObject');
 
-  return groupedData;
+  return renderedGroupDataObject; // Return the grouped object
 }
+
+//  Object.keys(renderedGroupDataObject).forEach((key) => {
+//    renderedGroupDataObject[key].map((each) => {
+//      // do cleanup
+//      // if (titleMap[each.title]) {
+//      //   each.title = `each.title-1`;
+//      // }
+
+//      if (each.trackDetails) console.log(each, 'each key in renderedGroupDataObject');
+
+//      return each;
+//    });
+//  });
 
 function sortTracksByOrder(groupedData) {
   for (const dateKey in groupedData) {
@@ -535,3 +456,47 @@ export function calendarDataWithAddedDates(formattedCalendarData, emptyDatesToAd
     return formattedCalendarData;
   }
 }
+
+//   const talkRecords.forEach(object => {
+//   if (!renderedGroupDataObject[object.trackDate]) {
+//     renderedGroupDataObject[object.trackDate] = [];
+//   }
+
+//   renderedGroupDataObject[object.trackDate].push(object);
+// });
+
+/*
+    const renderedGroupDataObject = {};
+    const talkRecords.forEach(object => {
+      if (!renderedGroupDataObject[object.trackDate]) {
+        renderedGroupDataObject[object.trackDate] = [];
+      }
+
+      renderedGroupDataObject[object.trackDate].push(object);
+    });
+
+    ^ the above produces
+
+    {
+      'date-1': [objects],
+      'date-2': [objects]
+    }
+
+    Object.keys(renderedGroupDataObject).forEach((key) => {
+      titleMap = {};
+    
+      renderedGroupDataObject[key].map((each) => {
+        // do cleanup
+        if (titleMap[each.title]) {
+          each.title = `each.title-1`;
+        }
+
+        return each;
+      });
+    });
+  */
+
+// Sort the tracks based on their order
+// sortTracksByOrder(groupedData);
+
+// return groupedData;
