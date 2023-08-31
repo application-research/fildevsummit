@@ -103,6 +103,7 @@ const getValidDates = (trackDates) => {
 
 //format the raw airtable data into camelcase data
 export function formatAirtableMetaData({ records, timezone }) {
+  console.log(records, 'records');
   if (!records) return null;
 
   const formattedRecords = records?.map((record) => {
@@ -194,7 +195,7 @@ export function getTrackDetails(formattedAirtableData, trackSelected) {
 export function getFormattedAirtableFields(formattedAirtableData): any {
   const groupedData: any = {};
   const talkRecords: any = []; // Store all Talk records
-
+  console.log(formattedAirtableData, 'formatted');
   formattedAirtableData.forEach((formattedRecord) => {
     const trackDates = getValidDates(formattedRecord.trackDate);
 
@@ -231,6 +232,8 @@ export function getFormattedAirtableFields(formattedAirtableData): any {
   });
 
   // Process 'Talk' records
+  const unmatchedTalks = [];
+
   talkRecords.forEach((talk) => {
     const trackDatesForTalk = getValidDates(talk.trackDate);
 
@@ -238,8 +241,11 @@ export function getFormattedAirtableFields(formattedAirtableData): any {
       if (trackDateForTalk) {
         const formattedDateForTalk = formatUTCDateString(trackDateForTalk);
 
-        // NOTE(jim):
-        // Hotfixes mising array.
+        if (!Array.isArray(talk.tracks) || talk.tracks.length === 0) {
+          return;
+        }
+
+        // NOTE: Hotfixes missing array.
         if (!talk.tracks) {
           return;
         }
@@ -248,7 +254,7 @@ export function getFormattedAirtableFields(formattedAirtableData): any {
           return;
         }
 
-        const trackForTalk = talk.tracks[0]; //pick the first track for now since the unique talks shows up under 1 track
+        const trackForTalk = talk.tracks[0]; // Pick the first track for now since the unique talks show up under 1 track
 
         if (groupedData.hasOwnProperty(formattedDateForTalk)) {
           let existingTrackForTalk = groupedData[formattedDateForTalk].find((trackData) => trackData.title === trackForTalk);
@@ -259,14 +265,20 @@ export function getFormattedAirtableFields(formattedAirtableData): any {
             const trackDetailsForTalk = getTrackDetails(formattedAirtableData, trackForTalk);
             groupedData[formattedDateForTalk].push({
               title: trackForTalk,
-              trackDetails: trackDetailsForTalk[Object.keys(trackDetailsForTalk)[0]], // there is only 1 track details record for a track
+              trackDetails: trackDetailsForTalk[Object.keys(trackDetailsForTalk)[0]], // There is only 1 track details record for a track
               records: [talk],
             });
           }
+        } else {
+          // Track data not found, this talk is unmatched
+          unmatchedTalks.push(talk);
         }
       }
     });
   });
+
+  // Log unmatched talks
+  console.log('Unmatched talks:', unmatchedTalks);
 
   // Sort the tracks based on their order
   sortTracksByOrder(groupedData);

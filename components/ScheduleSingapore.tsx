@@ -23,7 +23,12 @@ export default function ScheduleSingapore({ scheduleData }) {
     if (scheduleData?.airtable?.tableName) {
       const fetchData = async () => {
         const singapore = await makeRequest({ endpoint: 'airtable/singapore' });
-        const formattedAirtableData = formatAirtableMetaData(singapore.data);
+
+        console.log('singapore data', singapore);
+        const formattedAirtableData = formatAirtableMetaData(singapore);
+
+        console.log('formattedAirtableData', formattedAirtableData);
+
         const fetchedSpeakers = getSpeakers(formattedAirtableData);
         setSingaporeData(formattedAirtableData);
         setSpeakers(fetchedSpeakers);
@@ -44,6 +49,7 @@ export default function ScheduleSingapore({ scheduleData }) {
   const formattedAirtableData = getFormattedAirtableFields(singaporeData);
   const calendarData = calendarDataWithAddedDates(formattedAirtableData, emptyDatesToAdd);
 
+  console.log('final data singapore', calendarData);
   return (
     <>
       <div style={{ paddingBottom: '4rem', display: 'grid', rowGap: '3rem' }}>
@@ -61,12 +67,12 @@ export default function ScheduleSingapore({ scheduleData }) {
         )}
       </div>
 
-      {speakers.length > 0 && (
+      {/* {speakers.length > 0 && (
         <div style={{ display: 'grid', rowGap: '2rem' }}>
           <h1 style={{ fontSize: 'var(--font-size-large)', fontWeight: 'var(--font-weight-light' }}> Speakers</h1>
           <Speakers speakers={speakers} />
         </div>
-      )}
+      )} */}
     </>
   );
 }

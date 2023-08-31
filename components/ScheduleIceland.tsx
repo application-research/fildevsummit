@@ -23,7 +23,7 @@ export default function ScheduleIceland({ scheduleData }) {
     if (scheduleData?.airtable?.tableName) {
       const fetchData = async () => {
         const iceland = await makeRequest({ endpoint: 'airtable/iceland' });
-        const formattedAirtableData = formatAirtableMetaData(iceland.data);
+        const formattedAirtableData = formatAirtableMetaData(iceland);
         const fetchedSpeakers = getSpeakers(formattedAirtableData);
         setIcelandData(formattedAirtableData);
         setSpeakers(fetchedSpeakers);
@@ -43,6 +43,7 @@ export default function ScheduleIceland({ scheduleData }) {
   const formattedAirtableData = getFormattedAirtableFields(icelandData);
   const calendarData = calendarDataWithAddedDates(formattedAirtableData, emptyDatesToAdd);
 
+  console.log(calendarData, 'calendar data');
   return (
     <>
       <div style={{ paddingBottom: '4rem', display: 'grid', rowGap: '3rem' }}>
