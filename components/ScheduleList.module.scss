@@ -47,6 +47,7 @@
 
   @media (max-width: 768px) {
     flex-direction: column;
+    padding-left: 0rem;
   }
 }
 
@@ -76,6 +77,10 @@
   padding-right: 1rem;
   padding-bottom: 0.5rem;
   background: var(--color-gray-transparent);
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .scheduleRowTitle {
