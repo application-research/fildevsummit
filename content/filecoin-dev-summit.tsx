@@ -96,7 +96,7 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
       {
         id: 'upcoming-events',
         type: BlockTypeEnum.MEDIA_GRID,
-        title: 'Upcoming Event',
+        title: 'Past Events',
         media: [
           {
             id: 'upcoming-events',
@@ -116,7 +116,7 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
       {
         id: 'upcoming-events',
         type: BlockTypeEnum.MEDIA_GRID,
-        title: 'Past Event',
+       
         media: [
           {
             id: 'upcoming-events',
