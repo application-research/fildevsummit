@@ -142,6 +142,13 @@ export default function ScheduleListByTalks({ scheduleData }) {
                               {event.title && <p className={styles.trackTitle}>Track: {event.title}</p>}
                               {event?.trackDetails?.roomName && <p className={styles.talkRoom}> Room: {event.trackDetails.roomName}</p>}
                               {event?.trackDetails?.capacity && <p className={styles.talkCapacity}> Capacity: {event.trackDetails.capacity}</p>}
+                              {event?.records?.videoLink && (
+                              <span>
+                                <Link href={event.trackDetails.videoLink} linkStyle="animated">
+                                  <strong style={{ fontSize: 'var(--font-size-small)' }}>View Video</strong>
+                                </Link>
+                              </span>
+                            )}
                             </p>
                             <p className={classNames(styles.col50, styles.desc)}>{record?.desc && record.desc}</p>
                           </div>

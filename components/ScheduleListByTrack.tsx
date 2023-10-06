@@ -76,6 +76,13 @@ export default function ScheduleListByTrack({ scheduleData }) {
                         {event.trackDetails.time && <p className={styles.time}>{event.trackDetails.time}</p>}
                         {event.trackDetails.roomName && <p> Room: {event.trackDetails.roomName}</p>}
                         {event.trackDetails.capacity && <p> Capacity: {event.trackDetails.capacity}</p>}
+                        {event.records.videoLink && (
+                              <span>
+                                <Link href={event.trackDetails.videoLink} linkStyle="animated">
+                                  <strong style={{ fontSize: 'var(--font-size-small)' }}>View Video</strong>
+                                </Link>
+                              </span>
+                            )}
                       </div>
                     ) : null}
                     {event?.records.length > 1 && <h4 style={{ padding: '0.5rem 0rem' }}>Scheduled Talks</h4>}
