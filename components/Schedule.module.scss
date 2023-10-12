@@ -114,21 +114,17 @@
   right: -2px;
   bottom: -2px;
   left: -2px;
-  border: 2px solid red; /* Start with the same color as the original border */
+  border: 2px solid var(--color-black);
   border-radius: inherit;
   border-image: linear-gradient(to bottom right, var(--gradient-border-blue-green));
   border-image-slice: 1;
   z-index: -1;
-  transition: border-color 200ms ease-in; /* Smooth transition of the border color */
+  transition: border-color 200ms ease-in;
 }
 
 .eventBox:hover {
   background: linear-gradient(to bottom right, var(--gradient-border-blue-green-transparent));
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.eventBox:hover::before {
-  border-color: red; /* Make the base border color transparent to reveal the gradient on hover */
 }
 
 .eventName {
