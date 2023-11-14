@@ -3,6 +3,7 @@ import styles from '@components/BlockBuilder.module.scss';
 import { Block } from './Block';
 import { CallToActionVariant } from './CallToActionVariant';
 import { BlockDirectionEnum } from '@root/common/types';
+import GutterContainer from './GutterContainer';
 
 function BlockBuilderDirectionStyle(direction) {
   switch (direction) {
@@ -30,7 +31,9 @@ function BlockBuilderDirectionStyle(direction) {
 export default function BlockBuilder({ block, cta, title, subtitle, id, border, description, direction }) {
   return (
     <div id={id} style={{ display: 'grid', rowGap: '2rem', background: block?.backgroundColor ?? 'var(--color-white)' }}>
-      {(title || description || subtitle) && (
+      {/* {(title || description || subtitle) && (
+      <>
+
         <section className={styles.row} style={{ borderBottom: border ? '1px solid var(--color-text)' : '' }}>
           <div style={{ display: 'grid', rowGap: '1rem' }}>
             {title && <h1 className={styles.mainTitle}>{title}</h1>}
@@ -39,10 +42,12 @@ export default function BlockBuilder({ block, cta, title, subtitle, id, border, 
           </div>
 
               {cta && <CallToActionVariant cta={cta} type={cta.type} />}
-            </section>
-          )}
-        </>
+       </section>
+       
+   
+       </>
       ) : (
+      <>
         <GutterContainer>
           {(title || description || subtitle) && (
             <section className={styles.row} style={{ borderBottom: border ? '1px solid var(--color-text)' : '' }}>
@@ -56,7 +61,8 @@ export default function BlockBuilder({ block, cta, title, subtitle, id, border, 
             </section>
           )}
         </GutterContainer>
-      )}
+        </>
+      )} */}
 
       <div className={`${BlockBuilderDirectionStyle(direction)}`}>
         {block?.map((blockItem, index) => {

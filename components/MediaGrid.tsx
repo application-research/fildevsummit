@@ -42,7 +42,7 @@ export default function MediaGrid({ media, title, id }) {
                 {subtitle && <p className={styles.subtitle}>{mediaItem.subtitle}</p>}
                 {smallDesc && <p className={styles.smallDesc}>{mediaItem.smallDesc}</p>}
               </div>
-              {desc && <p className={styles.smallDesc}>{mediaItem.desc}</p>}
+              {/* {desc && <p className={styles.smallDesc}>{mediaItem.desc}</p>} */}
             </div>
           </a>
         );

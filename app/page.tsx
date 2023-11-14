@@ -48,7 +48,7 @@ export default async function Page(props) {
   const pageStyle = FILECOIN_DEV_SUMMIT_PAGE_STYLE_CONTENT;
 
   const promises = blocks.flatMap((contentItem) =>
-    contentItem.block.map(async (blockItem) => {
+    contentItem?.block?.map(async (blockItem) => {
       if ('scheduleData' in blockItem && blockItem.scheduleData.airtable) {
         try {
           const data = await makeRequest({ endpoint: blockItem.scheduleData.airtable.endPoint, host: blockItem.scheduleData.airtable.host });

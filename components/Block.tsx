@@ -1,11 +1,7 @@
 import { BlockTypeEnum } from '@root/common/types';
 import { Collapsable } from './Collapsable';
-<<<<<<< HEAD
-import EventsRow from './EventsRow';
-=======
 
 import Collapsables from './Collapsables';
->>>>>>> 769859b (updated columns for block direction)
 import Hero from './Hero';
 import ImageText from './ImageText';
 import ImageTextWithOverflow from './ImageTextWithOverflow';

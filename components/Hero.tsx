@@ -2,7 +2,6 @@ import styles from '@components/Hero.module.scss';
 
 import { CallToActionVariant } from './CallToActionVariant';
 import GutterContainer from './GutterContainer';
-import { MarkdownToJSX } from './Markdown';
 
 export default function Hero({ background, cta, date, description, label, location, title }: any) {
   const containerStyle = {
@@ -26,14 +25,15 @@ export default function Hero({ background, cta, date, description, label, locati
           )}
           {description && <p className={styles.description} dangerouslySetInnerHTML={{ __html: description }} />}
 
-        {cta && (
-          <div className={styles.row} style={{ paddingTop: '1rem' }}>
-            {cta.map((ctaItem, index) => {
-              return <CallToActionVariant key={index} type={ctaItem.type} cta={ctaItem} />;
-            })}
-          </div>
-        )}
-      </section>
+          {cta && (
+            <div className={styles.row} style={{ paddingTop: '1rem' }}>
+              {cta.map((ctaItem, index) => {
+                return <CallToActionVariant key={index} type={ctaItem.type} cta={ctaItem} />;
+              })}
+            </div>
+          )}
+        </section>
+      </GutterContainer>
     </div>
   );
 }

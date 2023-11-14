@@ -1,17 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { BlockTypeEnum, CallToActionVariantEnum, NavigationTypeEnum, TypeName } from '@root/common/types';
 import { EVENT_PAGE_SCHEDULE_IPFS_THING_2023 } from './event-page-content';
-=======
 import { BlockDirectionEnum, BlockTypeEnum, CallToActionVariantEnum, NavigationTypeEnum, Ratio, TypeName } from '@root/common/types';
->>>>>>> 769859b (updated columns for block direction)
-=======
-import { BlockDirectionEnum, BlockTypeEnum, CallToActionVariantEnum, LocationEnum, NavigationTypeEnum, Ratio, TypeName } from '@root/common/types';
->>>>>>> 6f84cbc (added speaker section)
-=======
-import { BlockDirectionEnum, BlockTypeEnum, CallToActionVariantEnum, NavigationTypeEnum, Ratio, TypeName } from '@root/common/types';
->>>>>>> 5777794 (updated airtable sync)
 
 export const FILECOIN_DEV_SUMMIT_2023_HERO_CONTENT = {
   id: 'hero',
@@ -21,7 +9,6 @@ export const FILECOIN_DEV_SUMMIT_2023_HERO_CONTENT = {
     "FIL Dev Summit is a gathering of developers, builders, and engaged community members who want to contribute to the core protocol and network evolution of Filecoin (think IPFS Thing, but bigger!). This summit is more than just a meetup—it's a place for meaningful and impactful conversations that help push Filecoin forward. <br><br> Discussions at the summit will cover a wide range of topics, from protocol scalability and network improvements to the intricacies of data onboarding and governance structures.These conversations serve to share and refine improvements - where participants can gain insights from diverse perspectives, challenge assumptions, and collectively arrive at innovative solutions to the challenges faced by the Filecoin ecosystem.",
 };
 
-<<<<<<< HEAD
 export const FILECOIN_DEV_SUMMIT_ICELAND_CALENDAR = {
   airtable: null,
   formLink: {
@@ -74,8 +61,6 @@ export const FILECOIN_DEV_SUMMIT_ASIA_CALENDAR = {
   ],
 };
 
-=======
->>>>>>> f9ceb8d (submit track or talk)
 export const FILECOIN_DEV_SUMMIT_PAGE_STYLE_CONTENT = {
   backgroundColor: 'var(--color-white)',
   textColor: 'var(--color-black)',
@@ -135,39 +120,18 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
             src: '/media/greaterheat.png',
             href: 'https://www.greaterheat.com/',
           },
-           {
+          {
             src: 'https://ibb.co/m0xVz91',
             href: 'https://glif.io/',
           },
           {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            src: '/media/glif.png',
-=======
-            src: 'https://i.ibb.co/KD1py2R/long-dark.png',
->>>>>>> ec34361 (updating glif logo)
-=======
             src: 'https://yourimageshare.com/ib/T9uiL019Wc',
->>>>>>> 259348d (updating glif logo)
+
             href: 'https://www.glif.io/',
           },
           {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 30c63c2 (Update filecoin-dev-summit.tsx)
-            src: 'https://i.ibb.co/JrQzymQ/Fil-Fi-logo.jpg',
-=======
-            src: '/media/filfi-logo.png',
->>>>>>> 1eba6bc (updated logos)
-=======
-            src: '/media/filfi.svg',
->>>>>>> 3d59840 (update past events)
-=======
             src: '/media/filfi.png',
->>>>>>> c31b79b (past event)
+
             href: 'https://filfi.io/',
           },
           {
@@ -200,14 +164,10 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
         media: [
           {
             id: 'upcoming-events',
-<<<<<<< HEAD
-            type: BlockTypeEnum.MEDIA,
-<<<<<<< HEAD
 
-            heading: 'Filecoin Dev Summit - Singapore',
-=======
+            type: BlockTypeEnum.MEDIA,
             heading: 'FIL Dev Summit - Singapore',
->>>>>>> ddccff6 (updated event copy)
+
             subtitle: 'September 12 - 14th, 2023',
             smallDesc: 'Organized by Filecoin Foundation',
             media: {
@@ -219,36 +179,7 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
           },
           {
             id: 'upcoming-events',
-=======
->>>>>>> 210a57f (reorder the schedule)
-            type: TypeName.MEDIA_IMAGE,
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> eb65069 (added apply to attend section, updated copy)
-            heading: 'FIL Dev Summit - Iceland',
-            subtitle: 'September 25-27th, 2023',
-=======
-            heading: 'Filecoin Dev Summit - Iceland',
-=======
-            heading: 'FIL Dev Summit - Iceland',
->>>>>>> ddccff6 (updated event copy)
-=======
-            heading: 'FilDev2 - Iceland',
->>>>>>> e7b9b9c (added dates to FilDev1, and FilDev2)
-            subtitle: 'September 25 - 27th, 2023',
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 1e4d745 (updated copy)
-            desc: 'Reykjavík, Iceland',
-=======
-
->>>>>>> 25a88a3 (updated homepage)
-=======
->>>>>>> eb65069 (added apply to attend section, updated copy)
             smallDesc: 'Organized by Miwa',
             media: {
               type: TypeName.MEDIA_IMAGE,
@@ -364,7 +295,6 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
   //   ],
   // },
   {
-<<<<<<< HEAD
     id: 'singapore',
     direction: BlockDirectionEnum.COLUMN,
     noGutter: 'no',
@@ -375,10 +305,7 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
         type: BlockTypeEnum.IMAGE_TEXT_WITH_OVERFLOW,
         heading: 'Singapore',
         description: 'September 12 - 14th, 2023',
-<<<<<<< HEAD
-       // smallDesc: 'Organized by Filecoin Foundation',
-=======
->>>>>>> 25a88a3 (updated homepage)
+
         image: {
           src: '/media/singapore-long.png',
           ariaLabel: 'FIL Dev Summit - Singapore',
@@ -389,79 +316,40 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
   {
     id: 'singapore',
     backgroundColor: 'var(--color-white)',
-<<<<<<< HEAD
-    id: 'about',
-<<<<<<< HEAD
-    direction: 'column',
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-
->>>>>>> 7b68555 (fixed anchor)
     direction: BlockDirectionEnum.COLUMN,
->>>>>>> 769859b (updated columns for block direction)
     title: 'FIL Dev Summit - Singapore Schedule',
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     cta: {
       type: CallToActionVariantEnum.BUTTON,
       textColor: 'white',
       target: '_blank',
-<<<<<<< HEAD
       text: 'Apply to Attend',
       buttonColor: 'linear-gradient(to right,#123693, #00D389);',
       link: 'https://airtable.com/appEjnh5rpWMsjocb/shran7li4slfQSB04',
     },
-=======
-    title: 'Filecoin Dev Summit - Singapore Schedule',
->>>>>>> eeb976a (updated logo and buttons)
-=======
-    title: 'FIL Dev Summit - Singapore Schedule',
->>>>>>> ddccff6 (updated event copy)
-=======
->>>>>>> 6f84cbc (added speaker section)
     block: [
       {
         type: BlockTypeEnum.SCHEDULE,
         scheduleData: FILECOIN_DEV_SUMMIT_ASIA_CALENDAR,
       },
       {
-=======
-      text: 'Submit a Talk/Track',
-      buttonColor: 'linear-gradient(to right,#39C1CB, #006FEC);',
-      link: 'https://airtable.com/appEjnh5rpWMsjocb/shrw3Ha0yTusDmcOg',
-    },
-
-=======
-    // cta: {
-    //   type: CallToActionVariantEnum.BUTTON,
-    //   textColor: 'white',
-    //   target: '_blank',
-    //   text: 'Submit a Talk/Track',
-    //   buttonColor: 'linear-gradient(to right,#39C1CB, #006FEC);',
-    //   link: 'https://airtable.com/appEjnh5rpWMsjocb/shrw3Ha0yTusDmcOg',
-    // },
->>>>>>> 16f616b (updated calendar)
-=======
-
->>>>>>> 7b68555 (fixed anchor)
-    block: [
-      {
->>>>>>> f9ceb8d (submit track or talk)
-        type: BlockTypeEnum.SCHEDULE_SINGAPORE,
-        scheduleData: FIL_DEV_SUMMIT_SINGAPORE,
+        text: 'Submit a Talk/Track',
+        buttonColor: 'linear-gradient(to right,#39C1CB, #006FEC);',
+        link: 'https://airtable.com/appEjnh5rpWMsjocb/shrw3Ha0yTusDmcOg',
       },
-      // {
-      //   type: BlockTypeEnum.SPEAKERS,
-      //   location: LocationEnum.SINGAPORE,
-      // },
     ],
   },
+  // {
+
+  //   block: [
+  //     {
+
+  //       type: BlockTypeEnum.SCHEDULE_SINGAPORE,
+  //       scheduleData: FIL_DEV_SUMMIT_SINGAPORE,
+  //     },
+
+  //   ],
+  // },
   {
-=======
->>>>>>> 210a57f (reorder the schedule)
     id: 'iceland',
     backgroundColor: 'var(--color-white)',
     direction: BlockDirectionEnum.COLUMN,
@@ -497,80 +385,36 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
   //   ],
   // },
   {
-<<<<<<< HEAD
-    id: 'about',
-<<<<<<< HEAD
-    direction: 'column',
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
     id: 'iceland',
->>>>>>> 7b68555 (fixed anchor)
     direction: BlockDirectionEnum.COLUMN,
-<<<<<<< HEAD
->>>>>>> 769859b (updated columns for block direction)
-    title: 'FIL Dev Summit - Iceland Schedule',
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a6f7ecb (added button to apply for expo)
-=======
-    description: "<a style='color:#0090FF; text-decoration: none' href='/iceland'>Click here </a> to view the schedule in a list format",
->>>>>>> bf13e72 (list of schedule)
-=======
-=======
     title: 'FilDev2 - Iceland Schedule',
->>>>>>> e7b9b9c (added dates to FilDev1, and FilDev2)
     description: "<a style='color:#0090FF; text-decoration: none' href='/iceland-list'>Click here </a> to view the schedule in a list format",
->>>>>>> 1add20f (added talk description)
     cta: {
       type: CallToActionVariantEnum.BUTTON,
       textColor: 'white',
       target: '_blank',
-<<<<<<< HEAD
-<<<<<<< HEAD
+
       text: 'Apply to Attend',
       buttonColor: 'linear-gradient(to right,#123693, #00D389);',
       link: 'https://airtable.com/appEjnh5rpWMsjocb/shran7li4slfQSB04',
     },
-=======
-    title: 'Filecoin Dev Summit - Iceland Schedule',
 
->>>>>>> eeb976a (updated logo and buttons)
-=======
-    title: 'FIL Dev Summit - Iceland Schedule',
->>>>>>> ddccff6 (updated event copy)
-=======
-      text: 'Submit a Talk/Track',
-      buttonColor: 'linear-gradient(to right,#39C1CB, #006FEC);',
-      link: 'https://airtable.com/appEjnh5rpWMsjocb/shr6SmQjqdgn5Pc90',
-    },
->>>>>>> f9ceb8d (submit track or talk)
-=======
-    // cta: {
-    //   type: CallToActionVariantEnum.BUTTON,
-    //   textColor: 'white',
-    //   target: '_blank',
-    //   text: 'Submit a Talk/Track',
-    //   buttonColor: 'linear-gradient(to right,#39C1CB, #006FEC)',
-    //   link: 'https://airtable.com/appEjnh5rpWMsjocb/shr6SmQjqdgn5Pc90',
-    // },
->>>>>>> 16f616b (updated calendar)
-=======
-      text: 'Showcase Your Project at the EXPO',
-      buttonColor: 'linear-gradient(to right,#39C1CB, #006FEC)',
-      link: 'https://airtable.com/appEjnh5rpWMsjocb/shr4Pv7K5CxTo6DGi',
-    },
->>>>>>> a6f7ecb (added button to apply for expo)
+    // text: 'Submit a Talk/Track',
+    // buttonColor: 'linear-gradient(to right,#39C1CB, #006FEC);',
+    // link: 'https://airtable.com/appEjnh5rpWMsjocb/shr6SmQjqdgn5Pc90',
+  },
+
+  // {
+  //       text: 'Showcase Your Project at the EXPO',
+  //       buttonColor: 'linear-gradient(to right,#39C1CB, #006FEC)',
+  //       link: 'https://airtable.com/appEjnh5rpWMsjocb/shr4Pv7K5CxTo6DGi',
+  //     },
+  {
     block: [
       {
         type: BlockTypeEnum.SCHEDULE_ICELAND,
         scheduleData: FIL_DEV_SUMMIT_ICELAND,
       },
-<<<<<<< HEAD
       {
         type: BlockTypeEnum.SCHEDULE,
         scheduleData: FILECOIN_DEV_SUMMIT_ICELAND_CALENDAR,
@@ -640,8 +484,6 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
       //     },
       //   ],
       // },
-=======
->>>>>>> f9ceb8d (submit track or talk)
     ],
   },
   {
@@ -700,7 +542,6 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
       },
     ],
   },
-
   {
     id: 'faqs',
     title: 'FAQs',
