@@ -17,6 +17,7 @@ export enum BlockTypeEnum {
   SCHEDULE_LIST_BY_TRACK_ICELAND = 'schedule-list-by-track-iceland',
   SCHEDULE_LIST_BY_TALK_ICELAND = 'schedule-list-by-talk-iceland',
   SCHEDULE_LIST_TOGGLE_BY_TRACK_TALK_SINGAPORE = 'schedule-list-toggle-by-talk-track-singapore',
+  SCHEDULE_LIST_TOGGLE = 'schedule-list-toggle',
   SCHEDULE_LIST_BY_TRACK_SINGAPORE = 'schedule-list-by-track-singapore',
   SCHEDULE_LIST_BY_TALK_SINGAPORE = 'schedule-list-by-talk-singapore',
   SPEAKERS = 'speakers',

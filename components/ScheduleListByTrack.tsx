@@ -14,7 +14,7 @@ export default function ScheduleListByTrack({ scheduleData }) {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
 
   useEffect(() => {
-    if (scheduleData?.airtable?.tableName) {
+    if (scheduleData?.airtable) {
       const fetchData = async () => {
         try {
           const formattedAirtableData = formatAirtableMetaData(scheduleData?.airtable?.data);
@@ -24,10 +24,9 @@ export default function ScheduleListByTrack({ scheduleData }) {
           setLoading(false);
         } catch (e) {
           console.log(e);
-          setLoading(false); // Also set it to false in case of error
+          setLoading(false);
         }
       };
-
       fetchData();
     }
   }, [scheduleData]);

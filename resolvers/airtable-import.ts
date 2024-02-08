@@ -7,6 +7,7 @@ export const airtableFormattedFieldsMap = {
   Title: 'title',
   'Talk or Track?': 'type',
   'Talk or Track': 'type',
+  'IS THIS A TRACK OR A TALK': 'type',
   'Start Time': 'startTime', // date + time
   'Youtube Link': 'videoLink',
   TrackLink: 'trackLink',
@@ -22,6 +23,7 @@ export const airtableFormattedFieldsMap = {
   'What track(s) would be suitable for your session?': 'tracks',
   'What track(s) would be suitable for your session': 'tracks',
   'What category(s) would be suitable for your session?': 'tracks',
+  Category: 'tracks',
   'Archive of Original Tracks Submission': 'tracksSubmittedFor',
   'What format(s) are suitable for your talk or workshop?': 'format',
   'Talk Status': 'status',
@@ -40,6 +42,7 @@ export const airtableFormattedFieldsMap = {
   'Email Address': 'email',
   'First Name': 'firstName',
   'Last Name': 'lastName',
+  'Full Name': 'fullName',
   alias: 'prefersAlias',
   'I prefer to have an alias displayed on my track or talk instead of my full name.': 'prefersAlias',
   'I prefer to have an alias displayed on my track or talk instead of my full name': 'prefersAlias',
@@ -179,8 +182,24 @@ export function getTrackDetails(formattedAirtableData, trackSelected) {
   const trackDetails = {};
 
   formattedAirtableData.forEach((record) => {
-    const { capacity, firstName, tracks, discussionPoints, id, location, order, roomName, startDate, time, title, trackDate, trackDesc, trackSpeakersAndAttendees, trackStatus } =
-      record;
+    const {
+      capacity,
+      firstName,
+      fullName,
+      tracks,
+      discussionPoints,
+      id,
+      location,
+      order,
+      roomName,
+      startDate,
+      time,
+      title,
+      trackDate,
+      trackDesc,
+      trackSpeakersAndAttendees,
+      trackStatus,
+    } = record;
 
     let confirmedTrackStatus = Array.isArray(trackStatus) ? trackStatus[0] === ScheduleStatusEnum.CONFIRMED : trackStatus === ScheduleStatusEnum.CONFIRMED;
 
@@ -194,6 +213,7 @@ export function getTrackDetails(formattedAirtableData, trackSelected) {
             capacity,
             discussionPoints,
             firstName,
+            fullName,
             id,
             location,
             order,
@@ -254,7 +274,7 @@ export function getFormattedAirtableFields(formattedAirtableData): any {
   });
 
   // Process 'Talk' records
-  talkRecords.forEach((talk) => {
+  talkRecords?.forEach((talk) => {
     const trackDatesForTalk = getValidDates(talk.trackDate);
 
     trackDatesForTalk.forEach((trackDateForTalk) => {
@@ -307,12 +327,12 @@ export function getSpeakers(formattedAirtableData) {
   const speakers: any = [];
 
   formattedAirtableData.map((data) => {
-    const { confirmedForWebsite, firstName, title, lastName, spkrTitle, status, twitterUrl, headshot } = data ?? null;
+    const { confirmedForWebsite, firstName, fullName, title, lastName, spkrTitle, status, twitterUrl, headshot } = data ?? null;
 
-    if (firstName && lastName && status == ScheduleStatusEnum.ACCEPTED_BY_TRACK_LEAD) {
+    if ((firstName && lastName) || (fullName && status == ScheduleStatusEnum.ACCEPTED_BY_TRACK_LEAD)) {
       speakers.push({ title, firstName, lastName, spkrTitle, twitterUrl, headshot });
-    } else if (firstName && status == ScheduleStatusEnum.ACCEPTED_BY_TRACK_LEAD && confirmedForWebsite == true) {
-      speakers.push({ title, firstName, spkrTitle, twitterUrl, headshot });
+    } else if ((firstName || fullName) && status == ScheduleStatusEnum.ACCEPTED_BY_TRACK_LEAD && confirmedForWebsite == true) {
+      speakers.push({ title, firstName, fullName, spkrTitle, twitterUrl, headshot });
     }
   });
 
@@ -352,6 +372,40 @@ export function calendarDataWithAddedDates(formattedCalendarData, emptyDatesToAd
   } else {
     return formattedCalendarData;
   }
+}
+
+export function addDatesIfLessThan3EventDays(formattedCalendarData) {
+  const result = { ...formattedCalendarData };
+
+  // Extract dates from the formattedCalendarData keys and sort them
+  const dates = Object.keys(result).sort((a, b) => moment.utc(a).diff(moment.utc(b)));
+
+  if (dates.length < 3) {
+    // Assuming the dates array is in the 'ddd, MMM D' format
+    if (dates.length > 0) {
+      // Add one day before the earliest date
+      const earliestDate = moment.utc(dates[0], 'ddd, MMM D').subtract(1, 'days').format('ddd, MMM D');
+      result[earliestDate] = [];
+
+      // Add one day after the latest date
+      const latestDate = moment
+        .utc(dates[dates.length - 1], 'ddd, MMM D')
+        .add(1, 'days')
+        .format('ddd, MMM D');
+      result[latestDate] = [];
+    }
+  }
+
+  // Optionally sort the keys (dates) in ascending order again since we've added new dates
+  const sortedDates = Object.keys(result).sort((a, b) => moment.utc(a).diff(moment.utc(b)));
+
+  // Create a new object with sorted dates
+  const sortedResult = {};
+  sortedDates.forEach((date) => {
+    sortedResult[date] = result[date];
+  });
+
+  return sortedResult;
 }
 
 export function sortCalendarDataByDate(formattedCalendarData) {

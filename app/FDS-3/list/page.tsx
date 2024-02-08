@@ -1,18 +1,17 @@
 import '@root/global.scss';
 
-import {
-  FILECOIN_DEV_SUMMIT_ETH_DENVER_2024_HERO_CONTENT,
-  FIL_DEV_SUMMIT_ETH_DENVER_2024_NAVIGATION_CONTENT,
-  FILECOIN_DEV_SUMMIT_ETH_DENVER_2024_PAGE_CONTENT,
-  FIL_DEV_SUMMIT_PAGE_STYLE_CONTENT,
-  FOOTER_FILECOIN_DEV_SUMMIT_CONTENT,
-} from '@root/content/fildevsummit/filecoin-dev-eth-denver-2024';
 import { headers } from 'next/headers';
-import { makeRequest } from '@root/common/utilities';
 import FooterTiny from '@root/components/FooterTiny';
-import Hero from '@root/components/Hero';
 import ResponsiveNavbar from '@root/components/ResponsiveNavbar';
 import SectionEventPage from '@root/components/SectionEventPage';
+
+import { makeRequest } from '@root/common/utilities';
+import {
+  FILECOIN_DEV_SUMMIT_NAVIGATION_CONTENT,
+  FILECOIN_DEV_SUMMIT_PAGE_STYLE_CONTENT,
+  FOOTER_FILECOIN_DEV_SUMMIT_CONTENT,
+} from '@root/content/fildevsummit/filecoin-dev-singapore-iceland-2023';
+import { FDS_3_LIST_CONTENT } from '@root/content/fildevsummit/filecoin-dev-eth-denver-2024';
 
 export async function generateMetadata({ params, searchParams }) {
   const title = 'FIL Dev Summit 2024: ETH Denver';
@@ -42,28 +41,26 @@ export async function generateMetadata({ params, searchParams }) {
 }
 
 export default async function Page(props) {
-  const blocks = FILECOIN_DEV_SUMMIT_ETH_DENVER_2024_PAGE_CONTENT;
-  const currentHeaders = headers();
+  const blocks = FDS_3_LIST_CONTENT;
   const footerContent = FOOTER_FILECOIN_DEV_SUMMIT_CONTENT;
-  const hero = FILECOIN_DEV_SUMMIT_ETH_DENVER_2024_HERO_CONTENT;
+  const navContent = FILECOIN_DEV_SUMMIT_NAVIGATION_CONTENT;
+  const pageStyle = FILECOIN_DEV_SUMMIT_PAGE_STYLE_CONTENT;
+  const currentHeaders = headers();
   const host = currentHeaders.get('host');
-  const navContent = FIL_DEV_SUMMIT_ETH_DENVER_2024_NAVIGATION_CONTENT;
-  const pageStyle = FIL_DEV_SUMMIT_PAGE_STYLE_CONTENT;
 
-  const promises = blocks?.flatMap((contentItem) =>
-    contentItem?.block?.map(async (blockItem) => {
-      if ('scheduleData' in blockItem && blockItem.scheduleData.airtable) {
-        try {
-          const airtableEndpoint = blockItem.scheduleData.airtable.endPoint;
-          const data = await makeRequest({ endpoint: airtableEndpoint, host });
+  const promises = blocks.flatMap((innerBlocks) => {
+    return innerBlocks.block.map(async (blockItem) => {
+      // Fetch table data
+      const airtableEndpoint = blockItem.scheduleData.airtable.endPoint;
+      let tableData = await makeRequest({
+        endpoint: airtableEndpoint,
+        host: host,
+      });
 
-          blockItem.scheduleData.airtable.data = data;
-        } catch (error) {
-          console.error('Error fetching tableData for blockItem:', blockItem, error);
-        }
-      }
-    })
-  );
+      // Set data to blockItem.scheduleData.airtable.data
+      blockItem.scheduleData.airtable.data = tableData;
+    });
+  });
 
   await Promise.all(promises);
 
@@ -71,11 +68,9 @@ export default async function Page(props) {
     <div style={{ background: pageStyle.backgroundColor, color: pageStyle.textColor }}>
       <ResponsiveNavbar navContent={navContent} />
 
-      <div style={{ paddingBottom: '4rem' }}>
-        <Hero {...hero} />
+      <div style={{ paddingTop: '3rem' }}>
+        <SectionEventPage blocks={blocks} pageStyle={pageStyle} />
       </div>
-
-      <SectionEventPage blocks={blocks} pageStyle={pageStyle} />
 
       <FooterTiny {...footerContent} />
     </div>
