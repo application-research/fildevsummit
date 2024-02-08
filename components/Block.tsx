@@ -47,8 +47,8 @@ export function Block({ block }) {
       return <ScheduleIceland {...block} />;
     case (block.type = BlockTypeEnum.SCHEDULE_SINGAPORE):
       return <ScheduleSingapore {...block} />;
-    // case (block.type = BlockTypeEnum.SCHEDULE_ETHDENVER):
-    //   return <ScheduleETHDenver {...block} />;
+    case (block.type = BlockTypeEnum.SCHEDULE_ETHDENVER):
+      return <ScheduleETHDenver {...block} />;
     case (block.type = BlockTypeEnum.SCHEDULE_LIST_BY_TRACK_ICELAND):
       return <ScheduleListByTrack {...block} />;
     case (block.type = BlockTypeEnum.SCHEDULE_LIST_BY_TALK_ICELAND):
@@ -60,6 +60,8 @@ export function Block({ block }) {
     case (block.type = BlockTypeEnum.SCHEDULE_LIST_BY_TALK_SINGAPORE):
       return <ScheduleListByTalks {...block} />;
     case (block.type = BlockTypeEnum.SCHEDULE_LIST_TOGGLE_BY_TRACK_TALK_SINGAPORE):
+      return <ScheduleListToggleByTimeOrTrack {...block} />;
+    case (block.type = BlockTypeEnum.SCHEDULE_LIST_TOGGLE):
       return <ScheduleListToggleByTimeOrTrack {...block} />;
     case (block.type = BlockTypeEnum.TABLE):
       return <Table {...block} />;

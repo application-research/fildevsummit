@@ -3,7 +3,8 @@ import styles from '@components/Schedule.module.scss';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { SchedulePopUp } from './SchedulePopUp';
-import { cleanString } from '@root/common/utilities';
+import { classNames, cleanString } from '@root/common/utilities';
+import getScheduleGrid from 'system/layout/Grids';
 
 const NODE = process.env.NODE_ENV || 'development';
 const IS_PRODUCTION = NODE === 'production';
@@ -19,6 +20,10 @@ export default function Schedule({ calendarData, scheduleId }) {
 
   const tableRef = useRef<HTMLDivElement>(null);
   const headersRef = useRef<HTMLDivElement>(null);
+
+  // Determine the number of columns for the schedule based on total event days
+  const columnCount = Object.keys(calendarData).length;
+  const gridClass = getScheduleGrid(columnCount);
 
   useEffect(() => {
     function handleHashChange() {
@@ -104,7 +109,7 @@ export default function Schedule({ calendarData, scheduleId }) {
       <section className={styles.sectionScrollTooltip}>Click and drag the schedule to navigate</section>
 
       <div className={styles.scheduleWrapper}>
-        <div ref={tableRef} className={styles.schedule} style={{ overflowX: 'auto' }}>
+        <div ref={tableRef} className={classNames(styles.schedule, gridClass)} style={{ overflowX: 'auto' }}>
           {Object.entries(calendarData).map(([dateKey, tracksForDate], index) => {
             // Check if there are any items for the given date
             const hasItems = Array.isArray(tracksForDate) && tracksForDate.length > 0;
@@ -125,15 +130,17 @@ export default function Schedule({ calendarData, scheduleId }) {
                     const trackDetails = track.trackDetails;
                     const records = track.records;
                     if (trackDetails) {
-                      const { title, firstName, roomName, time, capacity } = trackDetails ?? '';
+                      const { title, firstName, fullName, roomName, time, capacity } = trackDetails ?? '';
 
                       return (
                         <div className={styles.eventBox} key={trackIndex} onClick={() => handleEventClick({ ...trackDetails, records })} onScroll={handleScroll}>
                           {title && <p className={styles.eventName}>{title}</p>}
+
                           <div className={styles.eventDetails}>
                             {time && <p className={styles.time}>{time}</p>}
                             {roomName && <p className={styles.location}>{roomName}</p>}
                             {firstName && <p className={styles.speakers}> {firstName}</p>}
+                            {fullName && <p className={styles.speakers}> {fullName}</p>}
                             <p className={styles.people}>👤 {capacity ?? '50 seats'}</p>
                           </div>
                         </div>

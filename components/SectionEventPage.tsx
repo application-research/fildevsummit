@@ -9,15 +9,15 @@ export default function SectionEventPage({ blocks, pageStyle }: any) {
     <div style={{ background: pageStyle?.backgroundColor ?? 'var(--color-white200)', display: 'grid', rowGap: '3rem' }}>
       <div className={styles.grid}>
         {blocks.map((blockItems, index) => {
-          const { block, border, cta, subtitle, description, direction, id, title, noGutter } = blockItems ?? {};
+          const { block, border, cta, cta2, subtitle, description, direction, id, title, noGutter } = blockItems ?? {};
 
           return (
             <FadeInSection key={index}>
               {noGutter ? (
-                <BlockBuilder block={block} cta={cta} description={description} subtitle={subtitle} id={id} title={title} direction={direction} border={border} />
+                <BlockBuilder block={block} cta={cta} cta2={cta2} description={description} subtitle={subtitle} id={id} title={title} direction={direction} border={border} />
               ) : (
                 <GutterContainer>
-                  <BlockBuilder block={block} cta={cta} description={description} subtitle={subtitle} id={id} title={title} direction={direction} border={border} />
+                  <BlockBuilder block={block} cta={cta} cta2={cta2} description={description} subtitle={subtitle} id={id} title={title} direction={direction} border={border} />
                 </GutterContainer>
               )}
             </FadeInSection>

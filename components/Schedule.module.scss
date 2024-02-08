@@ -6,7 +6,7 @@
 .headers {
   padding-bottom: 1rem;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  // grid-template-columns: repeat(5, 1fr);
 
   gap: 1rem;
   color: var(--color-white);
@@ -16,7 +16,7 @@
 
   @media (max-width: 768px) {
     top: 0rem;
-    grid-template-columns: repeat(3, 200px);
+    // grid-template-columns: repeat(3, 200px);
   }
 }
 
@@ -42,7 +42,7 @@
 
 .schedule {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  // grid-template-columns: repeat(5, 1fr);
   align-items: stretch;
   display: grid;
   gap: 1rem;
