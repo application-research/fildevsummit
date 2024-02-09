@@ -1,9 +1,9 @@
-import styles from '@components/ImageTextWithOverflow.module.scss';
+import styles from '@components/ImageWithTextOverflow.module.scss';
 
 import Image from './Image';
 import GutterContainer from './GutterContainer';
 
-export default function ImageTextWithOverflow({ image, description, subtitle, heading, cta }) {
+export default function ImageWithOverflow({ alt, image, description, subtitle, heading }) {
   return (
     <div style={{ width: '100%' }} className={styles.container}>
       <GutterContainer>
@@ -18,7 +18,7 @@ export default function ImageTextWithOverflow({ image, description, subtitle, he
         )}
       </GutterContainer>
 
-      <Image className={`${styles.image} ${styles.imageAbsolute} ${styles.maxHeight}`} altText={image.alt} src={image.src} />
+      <Image className={`${styles.image} ${styles.imageAbsolute} ${styles.maxHeight}`} altText={alt ?? 'image'} src={image.src} />
     </div>
   );
 }

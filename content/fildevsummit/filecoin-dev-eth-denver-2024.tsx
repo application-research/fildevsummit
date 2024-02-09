@@ -93,13 +93,16 @@ export const FILECOIN_DEV_SUMMIT_ETH_DENVER_2024_PAGE_CONTENT = [
     block: [
       {
         id: 'media',
-        type: BlockTypeEnum.IMAGE_TEXT_WITH_OVERFLOW,
-        heading: 'ETHDenver',
-        description: 'Feb 29th, 2024',
-        smallDesc: 'Organized by Miwa',
-        image: {
-          alt: 'eth-denver-fil-dev-summit',
-          src: '/media/denver-full.jpg',
+        type: BlockTypeEnum.MEDIA,
+        media: {
+          type: BlockTypeEnum.IMAGE_TEXT_WITH_OVERFLOW,
+          heading: 'ETHDenver',
+          description: 'Feb 29th, 2024',
+          smallDesc: 'Organized by Miwa',
+          image: {
+            alt: 'eth-denver-fil-dev-summit',
+            src: '/media/denver-full.jpg',
+          },
         },
       },
     ],
