@@ -1,7 +1,7 @@
 'use client';
 import styles from '@components/Collapsable.module.scss';
 
-import { MarkdownToJSX } from './Markdown';
+import { MarkdownToJSX } from './MarkdownToJSX';
 import { useState } from 'react';
 import PlusSVG from './svgs/PlusSVG';
 
@@ -26,7 +26,7 @@ export function Collapsable({ id, title, backgroundColor, textColor, collapsedTe
 
       {isExpanded && (
         <section className={`${styles.collapsedText} ${styles.expanded}`}>
-          <MarkdownToJSX>{collapsedText}</MarkdownToJSX>
+          <MarkdownToJSX color="var(--color-white)">{collapsedText}</MarkdownToJSX>
         </section>
       )}
     </div>

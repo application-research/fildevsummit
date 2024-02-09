@@ -43,7 +43,7 @@
   font-weight: 400;
   display: block;
   text-decoration: none;
-  color: var(--color-text);
+  color: inherit;
 
   &:visited {
     color: var(--color-text);

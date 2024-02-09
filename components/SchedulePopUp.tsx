@@ -1,6 +1,6 @@
 import styles from '@components/SchedulePopUp.module.scss';
 
-import { MarkdownToJSX } from './Markdown';
+import { MarkdownToJSX } from './MarkdownToJSX';
 import VideoPlayerSVG from './svgs/VideoPlayerSVG';
 import Link from './Link';
 
