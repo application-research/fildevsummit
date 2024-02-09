@@ -234,7 +234,7 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
         type: BlockTypeEnum.MEDIA,
         media: {
           type: TypeName.MEDIA_VIDEO,
-          src: 'https://youtu.be/JtG08g_Thdc?si=stLVgquaxTc1WvOv',
+          src: 'https://www.youtube.com/watch?v=0tydpHgI_zE',
           ariaLabel: 'FIL Dev Summit 2023 - Iceland',
         },
       },

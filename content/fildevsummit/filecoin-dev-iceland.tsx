@@ -44,34 +44,6 @@ export const FILECOIN_DEV_SUMMIT_ICELAND_PAGE_CONTENT = [
             href: 'https://web3mine.io/',
           },
         ],
-        logosMedium: [
-          {
-            src: '/media/greaterheat.png',
-            href: 'https://www.greaterheat.com/',
-          },
-          {
-            src: '/media/glif.png',
-            href: 'https://www.glif.io/',
-          },
-          {
-            src: '/media/filfi.png',
-            href: 'https://filfi.io/',
-          },
-          {
-            src: '/media/MineFi.png',
-            href: 'https://www.minefi.io/',
-          },
-          {
-            src: '/media/STFil.png',
-            href: 'https://stfil.io/#/',
-          },
-        ],
-        logosSmall: [
-          {
-            src: '/media/io-net.png',
-            href: 'https://io.net/',
-          },
-        ],
       },
     ],
   },
