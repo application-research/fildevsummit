@@ -73,6 +73,8 @@ export enum TypeName {
   MEDIA_IMAGE_WITH_TEXT = 'media-image-with-text',
   MEDIA_ROW = 'media-row',
   MEDIA_VIDEO = 'media-video',
+  IMAGE_TEXT_WITH_OVERFLOW = 'image-text-with-overflow',
+  IMAGE_WITH_OVERLAY_TEXT = 'image-with-overlay-text',
 }
 
 export interface Video {

@@ -75,7 +75,7 @@ export const FILECOIN_DEV_SUMMIT_SINGAPORE_PAGE_CONTENT = [
       },
     ],
   },
- 
+
   {
     id: 'singapore',
     backgroundColor: 'var(--color-white)',
@@ -84,13 +84,16 @@ export const FILECOIN_DEV_SUMMIT_SINGAPORE_PAGE_CONTENT = [
     block: [
       {
         id: 'media',
-        type: BlockTypeEnum.IMAGE_TEXT_WITH_OVERFLOW,
-        heading: 'Singapore',
-        description: 'September 25 - 27th, 2024',
-        smallDesc: 'Organized by Miwa',
-        image: {
-          alt: 'singapore-fil-dev-summit',
-          src: '/media/singapore-full.png',
+        type: BlockTypeEnum.MEDIA,
+        media: {
+          type: BlockTypeEnum.IMAGE_TEXT_WITH_OVERFLOW,
+          heading: 'Singapore',
+          description: 'September 25 - 27th, 2024',
+          smallDesc: 'Organized by Miwa',
+          image: {
+            alt: 'singapore-fil-dev-summit',
+            src: '/media/singapore-full.png',
+          },
         },
       },
     ],
@@ -126,13 +129,15 @@ export const FILECOIN_DEV_SUMMIT_SINGAPORE_PAGE_CONTENT = [
           {
             type: BlockTypeEnum.COLLAPSABLE,
             title: 'What is FIL Dev Summit @ Singapore 2023?',
-            collapsedText: 'FIL Dev Summit is a gathering of developers, builders, and engaged community members who want to contribute to the core protocol and network evolution of Filecoin (think IPFS Thing, but bigger!). At Singapore 2023, FIL Dev Summit will host discuss hot topics around storage & aggregation L2s and how these technologies are revolutionizing decentralized data storage and access in the blockchain space. We will dive into workshops on FIL+ allocator tooling & design, learn about the innovative approaches to enhancing data retrieval speeds and reliability on Filecoin, and gain insights & best practices shared by leading web3 storage clients, as well as onramps. Passionate about decentralized tech? Join us at FIL Dev Summit at Singapore, or if you can’t make it, sponsor our event!',
+            collapsedText:
+              'FIL Dev Summit is a gathering of developers, builders, and engaged community members who want to contribute to the core protocol and network evolution of Filecoin (think IPFS Thing, but bigger!). At Singapore 2023, FIL Dev Summit will host discuss hot topics around storage & aggregation L2s and how these technologies are revolutionizing decentralized data storage and access in the blockchain space. We will dive into workshops on FIL+ allocator tooling & design, learn about the innovative approaches to enhancing data retrieval speeds and reliability on Filecoin, and gain insights & best practices shared by leading web3 storage clients, as well as onramps. Passionate about decentralized tech? Join us at FIL Dev Summit at Singapore, or if you can’t make it, sponsor our event!',
             backgroundColor: 'linear-gradient(to right,#39C1CB, #006FEC)',
           },
           {
             type: BlockTypeEnum.COLLAPSABLE,
             title: 'What is the goal of FIL Dev Summit?',
-            collapsedText: 'What do we want to come out of FIL Dev Summit? We want to bring the Filecoin developer community together, have important convos, show how the network is evolving, build collaboration connections between teams, collectively set a roadmap for critical protocol evolutions and extensions for the rest of this year. ',
+            collapsedText:
+              'What do we want to come out of FIL Dev Summit? We want to bring the Filecoin developer community together, have important convos, show how the network is evolving, build collaboration connections between teams, collectively set a roadmap for critical protocol evolutions and extensions for the rest of this year. ',
             backgroundColor: 'linear-gradient(to right,#39C1CB, #006FEC)',
           },
           {
@@ -144,8 +149,7 @@ export const FILECOIN_DEV_SUMMIT_SINGAPORE_PAGE_CONTENT = [
           {
             type: BlockTypeEnum.COLLAPSABLE,
             title: 'What is the venue FIL Dev Summit @ Singapore?',
-            collapsedText:
-              'The Fairmont Hotel at 80 Bras Basah Rd, Singapore 189560. Don’t forget to register to attend. You’ll be able to register at check-in',
+            collapsedText: 'The Fairmont Hotel at 80 Bras Basah Rd, Singapore 189560. Don’t forget to register to attend. You’ll be able to register at check-in',
             backgroundColor: 'linear-gradient(to right,#39C1CB, #006FEC)',
           },
           {
@@ -209,7 +213,6 @@ export const FILECOIN_DEV_SUMMIT_SINGAPORE_PAGE_CONTENT = [
       },
     ],
   },
-  
 ];
 
 export const FOOTER_FILECOIN_DEV_SUMMIT_CONTENT = {

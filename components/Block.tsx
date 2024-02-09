@@ -4,7 +4,7 @@ import { Collapsable } from './Collapsable';
 import Collapsables from './Collapsables';
 import Hero from './Hero';
 import ImageText from './ImageText';
-import ImageTextWithOverflow from './ImageTextWithOverflow';
+import ImageTextWithOverflow from './ImageWithOverlayText';
 import LogoGrid from './LogoGrid';
 import MediaBlock from './MediaBlock';
 import MediaGrid from './MediaGrid';

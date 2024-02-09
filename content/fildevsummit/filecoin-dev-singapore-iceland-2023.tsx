@@ -50,35 +50,17 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
             link: '#current-events',
             type: BlockTypeEnum.MEDIA,
             media: {
-              type: TypeName.MEDIA_IMAGE,
-              src: '/media/denver-with-words.png',
+              type: TypeName.IMAGE_WITH_OVERLAY_TEXT,
+              src: '/media/denver-full.jpg',
               ariaLabel: 'FIL Dev Summit',
               link: '/FDS-3',
+              title: 'FDS-3: ETH Denver',
+              subtitle: 'February 29, 2024',
+              rightSubheading: 'Organized by Miwa',
             },
           },
         ],
       },
-      // {
-      //   id: 'upcoming-events',
-      //   type: BlockTypeEnum.MEDIA_GRID,
-      //   title: 'd',
-      //   media: [
-      //     {
-      //       id: 'upcoming-events',
-      //       type: BlockTypeEnum.MEDIA,
-
-      //       heading: 'FilDev1 - Singapore',
-      //       subtitle: 'September 12 - 14th, 2023',
-      //       smallDesc: 'Organized by Filecoin Foundation',
-      //       media: {
-      //         type: TypeName.MEDIA_IMAGE,
-      //         src: '/media/singapore-full.png',
-      //         ariaLabel: 'FIL Dev Summit',
-      //         link: '#singapore',
-      //       },
-      //     },
-      //   ],
-      // },
     ],
   },
   {
@@ -94,117 +76,34 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
         media: [
           {
             id: 'past-events',
-            type: TypeName.MEDIA_IMAGE,
+            type: BlockTypeEnum.MEDIA,
             media: {
-              type: TypeName.MEDIA_IMAGE,
-              src: '/media/iceland-with-words.jpg',
+              type: TypeName.IMAGE_WITH_OVERLAY_TEXT,
+              src: '/media/iceland-full.jpg',
               ariaLabel: 'FIL Dev Summit',
               link: '/FDS-2',
+              title: 'FDS-2: Iceland',
+              subtitle: 'September 25 - 27, 2023',
+              rightSubheading: 'Organized by Miwa',
             },
           },
           {
             id: 'past-events',
             type: BlockTypeEnum.MEDIA,
             media: {
-              type: TypeName.MEDIA_IMAGE,
-              src: '/media/singapore-with-words.jpg',
+              type: TypeName.IMAGE_WITH_OVERLAY_TEXT,
+              src: '/media/singapore-full.png',
               ariaLabel: 'FIL Dev Summit',
               link: '/FDS-1',
+              title: 'FDS-1: Singapore',
+              subtitle: 'September 12 - 14, 2023',
+              rightSubheading: 'Organized by Miwa',
             },
           },
         ],
       },
-      // {
-      //   id: 'upcoming-events',
-      //   type: BlockTypeEnum.MEDIA_GRID,
-      //   title: 'd',
-      //   media: [
-      //     {
-      //       id: 'upcoming-events',
-      //       type: BlockTypeEnum.MEDIA,
-
-      //       heading: 'FilDev1 - Singapore',
-      //       subtitle: 'September 12 - 14th, 2023',
-      //       smallDesc: 'Organized by Filecoin Foundation',
-      //       media: {
-      //         type: TypeName.MEDIA_IMAGE,
-      //         src: '/media/singapore-full.png',
-      //         ariaLabel: 'FIL Dev Summit',
-      //         link: '#singapore',
-      //       },
-      //     },
-      //   ],
-      // },
     ],
   },
-  // {
-  //   id: 'tickets',
-  //   title: 'Apply to Attend',
-  //   direction: 'row',
-  //   block: [
-  //     {
-  //       type: BlockTypeEnum.TICKET_CARD,
-  //       backgroundColor: 'white',
-  //       textColor: 'black',
-  //       tickets: [
-  //         {
-  //           id: 'media',
-  //           type: BlockTypeEnum.TICKET_CARD,
-  //           price: '$150',
-  //           name: 'Singapore',
-  //           backgroundColor: 'white',
-  //           textColor: 'black',
-  //           description:
-  //             'Apply to attend Singapore FIL Dev Summit from September 12-14, 2023. </br></br> General Admission is $150 for all three days. Early bird tickets are 50% off until August 25.',
-  //           cta: {
-  //             type: CallToActionVariantEnum.BORDER,
-  //             target: '_blank',
-  //             buttonColor: 'linear-gradient(to right,#39C1CB, #006FEC)',
-  //             textColor: 'white',
-  //             text: 'Apply to Attend',
-  //             link: 'https://airtable.com/appEjnh5rpWMsjocb/shran7li4slfQSB04',
-  //           },
-  //         },
-  //         {
-  //           id: 'media',
-  //           type: BlockTypeEnum.TICKET_CARD,
-  //           price: '$150',
-  //           backgroundColor: 'white',
-  //           textColor: 'black',
-  //           name: 'Iceland',
-  //           description:
-  //             'Apply to attend Iceland FIL Dev Summit from September 25-27, 2023. </br></br> General Admission is $150 for all three days. Early bird tickets are 50% off until August 25.',
-  //           cta: {
-  //             type: CallToActionVariantEnum.BORDER,
-  //             buttonColor: 'linear-gradient(to right,#39C1CB, #006FEC)',
-  //             textColor: 'white',
-  //             target: '_blank',
-  //             text: 'Apply to Attend',
-  //             link: 'https://airtable.com/appEjnh5rpWMsjocb/shran7li4slfQSB04',
-  //           },
-  //         },
-  //         {
-  //           id: 'media',
-  //           type: BlockTypeEnum.TICKET_CARD,
-  //           backgroundColor: 'white',
-  //           textColor: 'black',
-  //           price: '',
-  //           name: 'Scholars',
-  //           description:
-  //             'This program is designed to provide opportunities for individuals from underrepresented communities, unique circumstances, or developing areas to participate in FIL Dev Summit.',
-  //           cta: {
-  //             type: CallToActionVariantEnum.BORDER,
-  //             buttonColor: 'linear-gradient(to right,#39C1CB, #006FEC)',
-  //             textColor: 'white',
-  //             target: '_blank',
-  //             text: 'Scholar Application',
-  //             link: 'https://airtable.com/appEjnh5rpWMsjocb/shrusGnJBsjYDlcwS',
-  //           },
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
   {
     id: 'iceland',
     backgroundColor: 'var(--color-white)',
@@ -213,13 +112,17 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
     block: [
       {
         id: 'media',
-        type: BlockTypeEnum.IMAGE_TEXT_WITH_OVERFLOW,
-        heading: 'Iceland',
-        description: 'September 25 - 27th, 2023',
-        smallDesc: 'Organized by Miwa',
-        image: {
-          alt: 'Iceland September 25 - 27th, 2023',
-          src: '/media/iceland-full.jpg',
+        type: BlockTypeEnum.MEDIA,
+        media: {
+          type: TypeName.IMAGE_TEXT_WITH_OVERFLOW,
+          heading: 'Iceland',
+          link: '/FDS-2',
+          description: 'September 25 - 27th, 2023',
+          smallDesc: 'Organized by Miwa',
+          image: {
+            alt: 'Iceland September 25 - 27th, 2023',
+            src: '/media/iceland-full.jpg',
+          },
         },
       },
     ],
@@ -244,7 +147,7 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
     id: 'iceland',
     direction: BlockDirectionEnum.COLUMN,
     title: 'FDS-2: Iceland Schedule',
-    description: "",
+    description: '',
     cta: {
       type: CallToActionVariantEnum.BUTTON,
       textColor: 'white',
@@ -268,12 +171,16 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
     block: [
       {
         id: 'media',
-        type: BlockTypeEnum.IMAGE_TEXT_WITH_OVERFLOW,
-        heading: 'Past Event - Singapore',
-        description: 'September 12 - 14th, 2023',
-        image: {
-          src: '/media/singapore-long.png',
-          ariaLabel: 'FIL Dev Summit - Singapore',
+        type: BlockTypeEnum.MEDIA,
+        media: {
+          type: TypeName.IMAGE_TEXT_WITH_OVERFLOW,
+          heading: 'Past Event - Singapore',
+          link: '/FDS-1',
+          description: 'September 12 - 14th, 2023',
+          image: {
+            alt: 'FIL Dev Summit - Singapore',
+            src: '/media/singapore-full.png',
+          },
         },
       },
     ],
@@ -289,7 +196,7 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
         media: {
           type: TypeName.MEDIA_VIDEO,
           src: 'https://youtu.be/JtG08g_Thdc?si=stLVgquaxTc1WvOv',
-          ariaLabel: 'FIL Dev Summit 2023 - Singapore',
+          alt: 'FIL Dev Summit 2023 - Singapore',
         },
       },
     ],
@@ -300,7 +207,7 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
 
     direction: BlockDirectionEnum.COLUMN,
     title: 'FDS-1: Singapore Schedule',
-    description: "",
+    description: '',
     cta: {
       type: CallToActionVariantEnum.BUTTON,
       textColor: 'white',
@@ -345,29 +252,27 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
               'FVM smart contract builders, core protocol devs, implementation engineering teams, tool builders, storage providers, large storage clients, token holders engaged in network governance, and more! People who care about how and why the protocol is evolving - Folks who are writing FIPS, implementing tools, or writing smart contracts. People who have product requirements. IPLD-yfiying the data as an example.',
             backgroundColor: 'linear-gradient(to right,#39C1CB, #006FEC)',
           },
-      
-//           {
-//             type: BlockTypeEnum.COLLAPSABLE,
-//             title: 'How can I participate at FIL Dev Summit?',
-//             collapsedText: `- **Join the conversations**: Join [#fil-dev-summit](https://app.slack.com/client/TEHTVS1L6/C05LHC1ULG1) in [Filecoin](https://filecoinproject.slack.com/ssb/redirect) Slack to stay connected with the conversations happening during the event and beyond.	
 
-// - **Tell a friend**: Let us know if there is someone you think we should invite, or direct them to our [website](https://fildev.io/).
+          //           {
+          //             type: BlockTypeEnum.COLLAPSABLE,
+          //             title: 'How can I participate at FIL Dev Summit?',
+          //             collapsedText: `- **Join the conversations**: Join [#fil-dev-summit](https://app.slack.com/client/TEHTVS1L6/C05LHC1ULG1) in [Filecoin](https://filecoinproject.slack.com/ssb/redirect) Slack to stay connected with the conversations happening during the event and beyond.
 
-// - **Lead a Track**: Submit your track for either/both locations in the schedule section of our [website](https://fildev.io/).
+          // - **Tell a friend**: Let us know if there is someone you think we should invite, or direct them to our [website](https://fildev.io/).
 
-// - **Give a Talk**: Not ready to lead an entire track, but still would like to contribute? Submit your talk for either/both locations in the schedule section of our website.
+          // - **Lead a Track**: Submit your track for either/both locations in the schedule section of our [website](https://fildev.io/).
 
-// - **Volunteer**: Email [hello@fildev.io](mailto:hello@fildev.io) if you’d like to help make the production of this event a success. We could really use your help!
+          // - **Give a Talk**: Not ready to lead an entire track, but still would like to contribute? Submit your talk for either/both locations in the schedule section of our website.
 
+          // - **Volunteer**: Email [hello@fildev.io](mailto:hello@fildev.io) if you’d like to help make the production of this event a success. We could really use your help!
 
-// - **Sponsor**: Your support helps bring together different teams from around the world to advance the core protocol development and evolve the Filecoin network. If you’re interested in sponsorship, please email us at [hello@fildev.io](mailto:hello@fildev.io) for more information.		
+          // - **Sponsor**: Your support helps bring together different teams from around the world to advance the core protocol development and evolve the Filecoin network. If you’re interested in sponsorship, please email us at [hello@fildev.io](mailto:hello@fildev.io) for more information.
 
+          // - **Become a Scholar**: Note that this program is designed to provide opportunities for individuals from underrepresented communities, unique circumstances, or developing areas to participate in FIL Dev Summit. Priority will be given to individuals with a history of strong contributions to FIL implementations and related projects, or potential future contributions to the FIL Implementors community.
 
-// - **Become a Scholar**: Note that this program is designed to provide opportunities for individuals from underrepresented communities, unique circumstances, or developing areas to participate in FIL Dev Summit. Priority will be given to individuals with a history of strong contributions to FIL implementations and related projects, or potential future contributions to the FIL Implementors community.
-
-// - **Keep up the momentum!**: After the event, all of the tracks will be posted to the Filecoin Youtube channel. Be sure to share your talk or track videos with the world! Help the broader community see all of the great work that has transpired and get a sense of what they can expect to see more of for the rest of the year and beyond.`,
-//             backgroundColor: 'linear-gradient(to right,#39C1CB, #006FEC)',
-//           },
+          // - **Keep up the momentum!**: After the event, all of the tracks will be posted to the Filecoin Youtube channel. Be sure to share your talk or track videos with the world! Help the broader community see all of the great work that has transpired and get a sense of what they can expect to see more of for the rest of the year and beyond.`,
+          //             backgroundColor: 'linear-gradient(to right,#39C1CB, #006FEC)',
+          //           },
           {
             type: BlockTypeEnum.COLLAPSABLE,
             title: 'What are the venues for FIL Dev Summit?',
