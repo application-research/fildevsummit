@@ -60,7 +60,8 @@ export function SchedulePopUp({ selectedEvent, isOpen, onClose, style }) {
                 <strong>Attendees</strong>: {trackAttendees}
               </p>
             )}
-            {trackDesc && <p className={styles.description}>{trackDesc}</p>}
+            {/* className={styles.description} */}
+            {trackDesc && <MarkdownToJSX>{trackDesc}</MarkdownToJSX>}
           </section>
           {/* <h4 style={{ paddingBottom: '1rem', borderBottom: '0.5px solid var(--color-black)' }}>Schedule</h4>
           <div className={` ${styles.tableHeader}`}>
