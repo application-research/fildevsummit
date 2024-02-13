@@ -88,7 +88,7 @@ export const FILECOIN_DEV_SUMMIT_SINGAPORE_PAGE_CONTENT = [
         media: {
           type: BlockTypeEnum.IMAGE_TEXT_WITH_OVERFLOW,
           heading: 'Singapore',
-          description: 'September 25 - 27th, 2024',
+          description: 'September 12 - 14th, 2024',
           smallDesc: 'Organized by Miwa',
           image: {
             alt: 'singapore-fil-dev-summit',

@@ -60,7 +60,7 @@ export const FILECOIN_DEV_SUMMIT_ICELAND_PAGE_CONTENT = [
         media: {
           type: BlockTypeEnum.IMAGE_TEXT_WITH_OVERFLOW,
           heading: 'Iceland',
-          description: 'September 12 - 14th, 2024',
+          description: 'September 25 - 27th, 2024',
           smallDesc: 'Organized by Miwa',
           image: {
             alt: 'icel-fil-dev-summit',
