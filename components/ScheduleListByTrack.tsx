@@ -84,7 +84,7 @@ export default function ScheduleListByTrack({ scheduleData }) {
                       {event.records?.map((record, index) => {
                         return (
                           <div key={index}>
-                            {index === 0 && (record?.firstName || record?.desc) && (
+                            {index === 0 && (record?.firstName || record?.desc || record?.fullName) && (
                               <div className={classNames(styles.grid2Cols, styles.scheduleRow)}>
                                 <p className={classNames(styles.col10, styles.scheduleRowTitle)}>Time</p>
                                 <p className={classNames(styles.col20, styles.scheduleRowTitle)}>Title</p>
@@ -99,7 +99,7 @@ export default function ScheduleListByTrack({ scheduleData }) {
                               <p className={styles.col10}>{record.startTime ?? '─'}</p>
                               {record?.title && <p className={classNames(styles.col20, styles.desc)}>{record.title}</p>}
 
-                              {record?.firstName && <p className={classNames(styles.col10, styles.desc)}>{record.firstName}</p>}
+                              {(record?.firstName || record?.fullName) && <p className={classNames(styles.col10, styles.desc)}>{record.firstName || record.fullName}</p>}
                               <p className={classNames(styles.col50, styles.desc)} style={{ display: 'grid', rowGap: '1rem' }}>
                                 {record?.desc && <p>{record.desc}</p>}
 

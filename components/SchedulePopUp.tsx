@@ -1,7 +1,6 @@
 import styles from '@components/SchedulePopUp.module.scss';
 
 import { MarkdownToJSX } from './MarkdownToJSX';
-import VideoPlayerSVG from './svgs/VideoPlayerSVG';
 import Link from './Link';
 
 export function SchedulePopUp({ selectedEvent, isOpen, onClose, style }) {
@@ -60,25 +59,29 @@ export function SchedulePopUp({ selectedEvent, isOpen, onClose, style }) {
                 <strong>Attendees</strong>: {trackAttendees}
               </p>
             )}
-            {/* className={styles.description} */}
             {trackDesc && <MarkdownToJSX>{trackDesc}</MarkdownToJSX>}
           </section>
-          {/* <h4 style={{ paddingBottom: '1rem', borderBottom: '0.5px solid var(--color-black)' }}>Schedule</h4>
-          <div className={` ${styles.tableHeader}`}>
-            <h4 className={`${styles.col1} ${styles.headerTitle}`}>Time</h4>
-            <h4 className={`${styles.col2} ${styles.headerTitle}`}>Track Lead</h4>
-            <h4 className={`${styles.col4} ${styles.headerTitle}`}>Info</h4>
-          </div> */}
 
-          {/* {sortedTalks &&
+          {sortedTalks.length > 0 && (
+            <>
+              <h4 style={{ paddingBottom: '1rem', borderBottom: '0.5px solid var(--color-black)' }}>Schedule</h4>
+              <div className={` ${styles.tableHeader}`}>
+                <h4 className={`${styles.col1} ${styles.headerTitle}`}>Time</h4>
+                <h4 className={`${styles.col2} ${styles.headerTitle}`}>Track Lead</h4>
+                <h4 className={`${styles.col4} ${styles.headerTitle}`}>Info</h4>
+              </div>
+            </>
+          )}
+          {sortedTalks &&
             sortedTalks.map((talk, index) => {
-              const { desc, firstName, lastName, videoLink, talkDuration, title } = talk;
+              const { desc, fullName, firstName, lastName, videoLink, startTime, talkDuration, title } = talk;
               const isLastIndex = index === sortedTalks.length - 1;
+
               return (
                 <div className={styles.tableRow} style={{ borderBottom: isLastIndex ? 'none' : '1px solid var(--color-gray-transparent200)' }} key={index}>
-                  <h4 className={styles.col1}> {talkDuration ? talkDuration : ''} </h4>
+                  {startTime && <h4 className={styles.col1}>{startTime ?? '─'}</h4>}
 
-                  <p className={styles.col1}>{firstName ? `${firstName} ${lastName}  ` : ''}</p>
+                  <p className={styles.col1}>{firstName ? `${firstName} ${lastName}  ` : fullName ? fullName : ''}</p>
                   <div className={styles.col4}>
                     <div className={styles.flexCol}>
                       <h4>{title ? title : ''}</h4>
@@ -94,10 +97,10 @@ export function SchedulePopUp({ selectedEvent, isOpen, onClose, style }) {
                   </div>
                 </div>
               );
-            })} */}
+            })}
         </div>
 
-        {/* <p className={styles.tooltip}>Scroll down to see full schedule</p> */}
+        {sortedTalks.length > 1 && <p className={styles.tooltip}>Scroll down to see full schedule</p>}
       </div>
     </section>
   );
