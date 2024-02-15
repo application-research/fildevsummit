@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: 'http://ipfsevents.io/sitemap.xml',
+    sitemap: 'https://fildev.io/sitemap.xml',
   };
 }

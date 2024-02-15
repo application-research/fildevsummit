@@ -5,12 +5,20 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  env: {
-    AIRTABLE_API: process.env.AIRTABLE_API,
-    AIRTABLE_BASE_ID: process.env.AIRTABLE_BASE_ID,
-    AIRTABLE_TABLE_ID: process.env.AIRTABLE_TABLE_ID,
-    AIRTABLE_TABLE_ID2: process.env.AIRTABLE_TABLE_ID2,
-  },
+  async redirects() {
+    return [
+      {
+        source: '/singapore-list',
+        destination: '/FDS-1/list',
+        permanent: true,
+      },
+      {
+        source: '/iceland-list',
+        destination: '/FDS-2/list',
+        permanent: true,
+      },
+    ]
+  }
 };
 
 module.exports = nextConfig;

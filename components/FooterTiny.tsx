@@ -4,7 +4,7 @@ import GutterContainer from './GutterContainer';
 import Link from './Link';
 
 export default function FooterTiny(footerContent) {
-  const { socialIcons, links } = footerContent;
+  const { socialIcons, links, source } = footerContent;
 
   return (
     <GutterContainer>
@@ -12,7 +12,7 @@ export default function FooterTiny(footerContent) {
         <div className={styles.row}>
           {links?.map((link, index) => {
             return (
-              <Link key={index} style="animated" href={link.href} target="_blank">
+              <Link key={index} linkStyle="animated" href={link.href} target="_blank">
                 <h4 className={styles.link}>{link.name}</h4>
               </Link>
             );
@@ -31,6 +31,13 @@ export default function FooterTiny(footerContent) {
                 </div>
               );
             })}
+          </div>
+        )}
+        {source && (
+          <div className={styles.sourceContainer}>
+            <Link linkStyle="animated" href={source[0].href} target="_blank">
+                <img src="/media/github.png" alt="GitHub Source" className={styles.socialIconImage} />
+            </Link>
           </div>
         )}
       </div>

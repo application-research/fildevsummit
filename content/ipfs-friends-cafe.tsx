@@ -1,4 +1,4 @@
-import { BlockTypeEnum, CallToActionVariantEnum, NavigationTypeEnum, Ratio, TypeName } from '@root/common/types';
+import { BlockDirectionEnum, BlockTypeEnum, CallToActionVariantEnum, NavigationTypeEnum, Ratio, TypeName } from '@root/common/types';
 
 export const IPFS_FRIENDS_CAFE_PAGE_HERO_CONTENT = {
   id: 'hero',
@@ -8,7 +8,7 @@ export const IPFS_FRIENDS_CAFE_PAGE_HERO_CONTENT = {
   description: 'Events that foster knowledge exchange, community growth, collaboration, innovation, and the continued advancement of IPFS as groundbreaking technology',
   cta: [
     {
-      type: CallToActionVariantEnum.BLACK,
+      type: CallToActionVariantEnum.BUTTON,
       backgroundColor: '#589396',
       textColor: 'white',
       target: '_blank',
@@ -74,7 +74,7 @@ export const IPFS_FRIENDS_FOOTER_CONTENT = {
     },
     {
       link: 'https://discuss.ipfs.tech/privacy',
-      text: 'Privacy',
+      text: 'Privacy Policy',
     },
     {
       link: 'https://ipfs.tech/legal/',
@@ -139,7 +139,7 @@ export const IPFS_FRIENDS_CAFE_PAGE_CONTENT = [
   // },
   {
     id: 'ipfs-friends-about',
-    direction: 'column',
+    direction: BlockDirectionEnum.COLUMN,
     title: 'About',
     block: [
       {
@@ -183,7 +183,7 @@ export const IPFS_FRIENDS_CAFE_PAGE_CONTENT = [
   // },
   {
     id: 'ipfs-friends-past-events',
-    direction: 'row',
+    direction: BlockDirectionEnum.ROW,
     title: 'Goals of IPFS + Friends',
     description:
       'Overall, these community-hosted events serve as a catalyst for knowledge exchange, community growth, collaboration, innovation, and the continued advancement of IPFS as a groundbreaking technology',
@@ -234,7 +234,7 @@ export const IPFS_FRIENDS_CAFE_PAGE_CONTENT = [
   },
   {
     id: 'ipfs-friends-past-events',
-    direction: 'row',
+    direction: BlockDirectionEnum.ROW,
     title: 'How We Can Help',
     block: [
       {
@@ -308,7 +308,7 @@ access information across the globe.`,
         type: BlockTypeEnum.COLLAPSABLE,
         backgroundColor: '#589396',
         title: 'How do I host an event?',
-        collapsedText: `We'd love to learn about your ideas for hosting an IPFS + Friends Cafe Community Event. Reach out to miwa@protocol.ai or fill out this  [Interest Form]([https://www.linkedin.com/in/uraleva/](https://linktr.ee/ipfscommunity?lt_utm_source=lt_share_link#287213225)https://linktr.ee/ipfscommunity?lt_utm_source=lt_share_link#287213225).`,
+        collapsedText: `We'd love to learn about your ideas for hosting an IPFS + Friends Cafe Community Event. Reach out to [hello@fildev.io](mailto:hello@fildev.io) or fill out this  [Interest Form]([https://www.linkedin.com/in/uraleva/](https://linktr.ee/ipfscommunity?lt_utm_source=lt_share_link#287213225)https://linktr.ee/ipfscommunity?lt_utm_source=lt_share_link#287213225).`,
       },
       {
         id: 'media',

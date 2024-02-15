@@ -1,3 +1,12 @@
+@import url('https://use.typekit.net/qai1loi.css');
+
+@font-face {
+  font-family: 'roc-grotesk-wide', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  src: url('https://use.typekit.net/qai1loi.css') format('woff');
+}
+
 @font-face {
   font-family: 'Mono';
   src: url('https://next-s3-public.s3.us-west-2.amazonaws.com/JetBrainsMono-Regular.woff2') format('woff');
@@ -20,6 +29,11 @@
 
 @font-face {
   font-family: 'Inter';
+  src: url('https://next-s3-public.s3.us-west-2.amazonaws.com/inter/Inter-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Inter Medium';
   src: url('https://next-s3-public.s3.us-west-2.amazonaws.com/inter/Inter-Medium.woff') format('woff');
 }
 
@@ -152,20 +166,32 @@ body {
   --gray700: #616161;
   --gray800: #424242;
   --color-gray-transparent: #84838332;
-  --color-gray-transparent100: #9b9b9bbc;
-  --color-gray-transparent200: #9393938a;
-
+  --color-gray-transparent100: #cecece8c;
+  --color-gray-transparent200: #8483835a;
+  --color-blue: #0090ff;
+  --color-blue-gray: #b0b0bf;
+  --color-beige: #fffdf5;
   --color-text: #000000;
   --color-background: #000000;
   --text-black: #000000;
   --text-white: #ffffff;
   --color-white100: #ccc;
   --font-size-small: 12px;
+  --font-size-regular-small: 14px;
   --font-size-regular: 16px;
   --font-size-medium: 24px;
+  --font-size-extra-medium: 24px;
   --font-size-large: 32px;
   --font-size-extra-large: 42px;
   --font-size-mega-large: 56px;
+
+  --type-scale-1: 4.25rem;
+  --type-scale-2: 2.25rem;
+  --type-scale-3: 1.5rem;
+  --type-scale-4: 1.25rem;
+  --type-scale-5: 1rem;
+  --type-scale-6: 0.875rem;
+  --type-scale-7: 0.75rem;
 
   --font-weight-light: 300;
   --font-weight-regular: 500;
@@ -180,6 +206,21 @@ body {
   --z-index-medium: 2;
   --z-index-large: 3;
 
+  --accent1-color: #081828;
+  --accent2-color: #8bf935;
+  --accent3-color: #6fbd97;
+  --accent4-color: #1a95fa;
+  --tw-gradient-from: var(--accent4-color);
+  --tw-gradient-to: var(--accent3-color);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--accent2-color), var(--tw-gradient-to, hsla(0, 0%, 100%, 0));
+
+  --gradient-border-blue-green: #1a95fa, #8bf935, #6fbd97;
+  --gradient-border-blue-green-transparent: rgba(26, 149, 250, 0.2), rgba(139, 249, 53, 0.2), rgba(111, 189, 151, 0.2);
+
+  --shadow-gray: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --tw-ring-shadow: #green;
+  --tw-shadow: #red;
+
   font-size: 16px;
   background: var(--color-background);
   color: var(--color-text);
@@ -191,8 +232,8 @@ body {
   // ---------------------------------------------------------------------- Other
   --page-gutters-default: 0 16px 0 16px;
   --page-gutters-desktop-default: 16px;
-  --page-gutters-desktop: 0 88px 0 88px;
-  --page-gutters-desktop-one-side: 88px;
+  --page-gutters-desktop: 0 60px 0 60px;
+  --page-gutters-desktop-one-side: 60px;
 
   --page-width: 1440px;
 
