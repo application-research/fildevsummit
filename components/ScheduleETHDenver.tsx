@@ -80,6 +80,10 @@ export default function SCHEDULE_ETH_DENVER({ scheduleData }) {
           </section>
         </a>
 
+        <div style={{ display: 'grid', rowGap: '2rem' }}>
+          <h1 style={{ fontSize: 'var(--font-size-large)', fontWeight: 'var(--font-weight-light' }}> Speakers</h1>
+          <Speakers speakers={speakers} />
+        </div>
         {/* {isExpanded && speakers.length > 0 && (
           <div style={{ display: 'grid', rowGap: '2rem' }}>
             <h1 style={{ fontSize: 'var(--font-size-large)', fontWeight: 'var(--font-weight-light' }}> Speakers</h1>

@@ -7,7 +7,7 @@ export default function Speakers({ speakers }) {
     <div className={styles.container}>
       <div className={styles.row}>
         {speakers.map((speaker, index) => {
-          const { firstName, title, twitterUrl, spkrTitle, headshot } = speaker;
+          const { firstName, fullName, title, twitterUrl, spkrTitle, headshot } = speaker;
 
           const headShotSrc = headshot && headshot[0]?.url ? headshot[0]?.url : '/media/placeholder.png';
 
@@ -28,12 +28,14 @@ export default function Speakers({ speakers }) {
   );
 }
 
-function SpeakerCard({ firstName, spkrTitle, twitterUrl }) {
+function SpeakerCard({ firstName, fullName, spkrTitle, twitterUrl }) {
   return (
     <div className={styles.speakerContainer}>
       <div className={styles.row}>
         <div style={{ display: 'grid', rowGap: '0.5rem' }}>
           {firstName && <p className={styles.firstName}>{firstName}</p>}
+          {fullName && <p className={styles.firstName}>{fullName}</p>}
+
           {spkrTitle && <p className={styles.spkrTitle}>{spkrTitle}</p>}
         </div>
         {twitterUrl && (
