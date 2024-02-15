@@ -12,6 +12,7 @@ export const airtableFormattedFieldsMap = {
   'Youtube Link': 'videoLink',
   TrackLink: 'trackLink',
   'Twitter Profile URL': 'twitterUrl',
+  'Twitter or Fediverse Profile URL': 'twitterUrl',
   'Confirmed for website': 'confirmedForWebsite',
   'Confirmed for Website': 'confirmedForWebsite',
   'Video Status/Comment': 'videoStatus',
@@ -36,6 +37,7 @@ export const airtableFormattedFieldsMap = {
 
   // speaker / track lead
   'Title & Organization': 'spkrTitle',
+  'Title & Organization / Project': 'spkrTitle',
   'If you are affiliated with an organization and would like your logo to be displayed on our event website as a participating team at IPFS thing, please upload a high res image below.':
     'logo',
   Headshot: 'headshot',
@@ -330,7 +332,7 @@ export function getSpeakers(formattedAirtableData) {
     const { confirmedForWebsite, firstName, fullName, title, lastName, spkrTitle, status, twitterUrl, headshot } = data ?? null;
 
     if ((firstName && lastName) || (fullName && status == ScheduleStatusEnum.ACCEPTED_BY_TRACK_LEAD)) {
-      speakers.push({ title, firstName, lastName, spkrTitle, twitterUrl, headshot });
+      speakers.push({ title, firstName, lastName, fullName, spkrTitle, twitterUrl, headshot });
     } else if ((firstName || fullName) && status == ScheduleStatusEnum.ACCEPTED_BY_TRACK_LEAD && confirmedForWebsite == true) {
       speakers.push({ title, firstName, fullName, spkrTitle, twitterUrl, headshot });
     }
