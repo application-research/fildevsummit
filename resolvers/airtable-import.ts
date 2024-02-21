@@ -41,6 +41,7 @@ export const airtableFormattedFieldsMap = {
   'If you are affiliated with an organization and would like your logo to be displayed on our event website as a participating team at IPFS thing, please upload a high res image below.':
     'logo',
   Headshot: 'headshot',
+  'Headshot or Avatar': 'headshot',
   'Email Address': 'email',
   'First Name': 'firstName',
   'Last Name': 'lastName',
