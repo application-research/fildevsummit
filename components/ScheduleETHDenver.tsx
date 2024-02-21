@@ -47,7 +47,7 @@ export default function SCHEDULE_ETH_DENVER({ scheduleData }) {
   const formattedAirtableData = getFormattedAirtableFields(denverData);
   const calendarData = sortCalendarDataByDate(formattedAirtableData);
   const startPlaceholder = 'Tues, Feb 27';
-  const endPlaceholder = 'Fri, Feb 28';
+  const endPlaceholder = 'Fri, Mar 1';
   const ensuredCalendarData = ensureMinimumEntries(calendarData, startPlaceholder, endPlaceholder);
   // console.log(ensuredCalendarData, 'calendar dataaa');
   return (
