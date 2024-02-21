@@ -40,7 +40,7 @@ export default function SCHEDULE_ETH_DENVER({ scheduleData }) {
   if (!denverData) return null;
 
   const submitTalk = {
-    text: 'Submit a Talk for ETHDenver',
+    text: 'Submit a Talk for FDS @ ETHDenver',
     url: 'https://airtable.com/appHcADfPc1dtLsTL/shrJKBdQLs9Vvm5HE',
   };
 
