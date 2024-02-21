@@ -53,7 +53,7 @@ function SpeakerCardWithImage({ headShotSrc, firstName, fullName, spkrTitle, twi
     <div className={styles.speakerContainer}>
       {headShotSrc && <img className={styles.headshot} alt={firstName} src={headShotSrc} />}
 
-      <div className={styles.col}>
+      <div className={styles.row}>
         <div style={{ display: 'grid', rowGap: '0.5rem' }}>
           {firstName && <p className={styles.firstName}>{firstName}</p>}
           {fullName && <p className={styles.firstName}>{fullName}</p>}
