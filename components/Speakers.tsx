@@ -15,10 +15,10 @@ export default function Speakers({ speakers }) {
             <div key={index}>
               {twitterUrl ? (
                 <a href={twitterUrl} className={styles.link} target="_blank">
-                  <SpeakerCard {...speaker} headShotSrc={headShotSrc} />
+                  <SpeakerCardWithImage {...speaker} headShotSrc={headShotSrc} />
                 </a>
               ) : (
-                <SpeakerCard {...speaker} headShotSrc={headShotSrc} />
+                <SpeakerCardWithImage {...speaker} headShotSrc={headShotSrc} />
               )}
             </div>
           );
@@ -48,7 +48,7 @@ function SpeakerCard({ firstName, fullName, spkrTitle, twitterUrl }) {
   );
 }
 
-function SpeakerCardWithImage({ headShotSrc, firstName, spkrTitle, title, twitterUrl }) {
+function SpeakerCardWithImage({ headShotSrc, firstName, fullName, spkrTitle, twitterUrl }) {
   return (
     <div className={styles.speakerContainer}>
       {headShotSrc && <img className={styles.headshot} alt={firstName} src={headShotSrc} />}
@@ -56,9 +56,15 @@ function SpeakerCardWithImage({ headShotSrc, firstName, spkrTitle, title, twitte
       <div className={styles.col}>
         <div style={{ display: 'grid', rowGap: '0.5rem' }}>
           {firstName && <p className={styles.firstName}>{firstName}</p>}
+          {fullName && <p className={styles.firstName}>{fullName}</p>}
+
           {spkrTitle && <p className={styles.spkrTitle}>{spkrTitle}</p>}
         </div>
-        {twitterUrl && <TwitterSVG className={styles.logo} width="1rem" height="2rem" props={{ height: '1rem', width: '1rem' }} />}
+        {twitterUrl && (
+          <span className={styles.speakerCardTwitter}>
+            <TwitterSVG className={styles.logo} width="1rem" height="2rem" props={{ height: '1rem', width: '1rem' }} />
+          </span>
+        )}
       </div>
     </div>
   );
