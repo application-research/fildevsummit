@@ -15,10 +15,10 @@ export default function Speakers({ speakers }) {
             <div key={index}>
               {twitterUrl ? (
                 <a href={twitterUrl} className={styles.link} target="_blank">
-                  <SpeakerCard {...speaker} headShotSrc={headShotSrc} />
+                  <SpeakerCardWithImage {...speaker} headShotSrc={headShotSrc} />
                 </a>
               ) : (
-                <SpeakerCard {...speaker} headShotSrc={headShotSrc} />
+                <SpeakerCardWithImage {...speaker} headShotSrc={headShotSrc} />
               )}
             </div>
           );
