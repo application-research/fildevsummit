@@ -383,6 +383,7 @@ export function addDatesIfLessThan3EventDays(formattedCalendarData) {
   // Extract dates from the formattedCalendarData keys and sort them
   const dates = Object.keys(result).sort((a, b) => moment.utc(a).diff(moment.utc(b)));
 
+  console.log(result, 'resulttt test ');
   if (dates.length < 3) {
     // Assuming the dates array is in the 'ddd, MMM D' format
     if (dates.length > 0) {
@@ -426,4 +427,38 @@ export function sortCalendarDataByDate(formattedCalendarData) {
   });
 
   return sortedResult;
+}
+
+export function ensureMinimumEntries(calendarData, firstPlaceholderText, lastPlaceholderText) {
+  const sortedKeys = Object.keys(calendarData);
+  const totalItems = sortedKeys.length;
+
+  // Check if the total number of items is less than 4
+  if (totalItems < 4) {
+    const itemsToAdd = 4 - totalItems;
+    const modifiedCalendarData = {};
+
+    // Determine how many placeholders to add at the start and end
+    let startPlaceholders = Math.floor(itemsToAdd / 2);
+    let endPlaceholders = itemsToAdd - startPlaceholders;
+
+    // Add start placeholders to the object
+    for (let i = 0; i < startPlaceholders; i++) {
+      modifiedCalendarData[firstPlaceholderText + (i > 0 ? ` ${i}` : '')] = [''];
+    }
+
+    // Copy the original data into the new object
+    sortedKeys.forEach((key) => {
+      modifiedCalendarData[key] = calendarData[key];
+    });
+
+    // Add end placeholders to the object
+    for (let i = 0; i < endPlaceholders; i++) {
+      modifiedCalendarData[lastPlaceholderText + (i > 0 ? ` ${i}` : '')] = [''];
+    }
+
+    return modifiedCalendarData;
+  }
+
+  return calendarData;
 }
