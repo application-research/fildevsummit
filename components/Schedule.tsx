@@ -24,7 +24,7 @@ export default function Schedule({ calendarData, scheduleId }) {
   // Determine the number of columns for the schedule based on total event days
   const columnCount = Object.keys(calendarData).length;
   const gridClass = getScheduleGrid(columnCount);
-
+  console.log(columnCount, 'column count');
   useEffect(() => {
     function handleHashChange() {
       const currentHash = window.location.hash.substring(1).toLowerCase();

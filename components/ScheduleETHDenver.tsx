@@ -2,7 +2,7 @@
 
 import styles from '@components/Schedule.module.scss';
 
-import { addDatesIfLessThan3EventDays, calendarDataWithAddedDates, formatAirtableMetaData, getFormattedAirtableFields, getSpeakers } from '@root/resolvers/airtable-import';
+import { ensureMinimumEntries, formatAirtableMetaData, getFormattedAirtableFields, getSpeakers, sortCalendarDataByDate } from '@root/resolvers/airtable-import';
 import { useState, useEffect } from 'react';
 import Schedule from './Schedule';
 import Speakers from './Speakers';
@@ -45,8 +45,11 @@ export default function SCHEDULE_ETH_DENVER({ scheduleData }) {
   };
 
   const formattedAirtableData = getFormattedAirtableFields(denverData);
-  const calendarData = addDatesIfLessThan3EventDays(formattedAirtableData);
-
+  const calendarData = sortCalendarDataByDate(formattedAirtableData);
+  const startPlaceholder = 'Tues, Feb 27';
+  const endPlaceholder = 'Fri, Feb 28';
+  const ensuredCalendarData = ensureMinimumEntries(calendarData, startPlaceholder, endPlaceholder);
+  // console.log(ensuredCalendarData, 'calendar dataaa');
   return (
     <>
       <div style={{ paddingBottom: '2rem', display: 'grid', rowGap: '3rem' }}>
@@ -57,7 +60,7 @@ export default function SCHEDULE_ETH_DENVER({ scheduleData }) {
             <div className={isExpanded ? styles.arrowUp : styles.arrowDown}></div>
           </button>
         </div> */}
-        <Schedule calendarData={calendarData} scheduleId={'schedule-ethdenver'} />
+        <Schedule calendarData={ensuredCalendarData} scheduleId={'schedule-ethdenver'} />
 
         {/*expand after the event is over! {isExpanded && calendarData && <Schedule calendarData={calendarData} scheduleId={'schedule-ethdenver'} />} */}
 
