@@ -81,6 +81,10 @@ export const FILECOIN_DEV_SUMMIT_ETH_DENVER_2024_PAGE_CONTENT = [
             src: '/media/ff-logo2.png',
             href: 'https://fil.org/',
           },
+          {
+            src: '/media/spheron.png',
+            href: 'https://www.spheron.network/'
+          }
         ],
       },
     ],
