@@ -9,12 +9,12 @@
   "scripts": {
     "dev": "next -p 10000",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 5151",
     "script": "ts-node -O '{\"module\":\"commonjs\"}' scripts/index.js"
   },
   "dependencies": {
     "airtable": "^0.12.1",
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.4.5",
     "encoding": "^0.1.13",
     "knex": "^2.4.2",
     "lottie-react": "^2.4.0",
@@ -30,7 +30,8 @@
     "react-use": "^17.4.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.0",
-    "sass": "1.67.0"
+    "sass": "1.67.0",
+    "supports-color": "^9.4.0"
   },
   "devDependencies": {
     "@types/node": "^20.6.0",
