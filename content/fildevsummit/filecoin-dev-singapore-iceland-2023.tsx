@@ -51,12 +51,12 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
             type: BlockTypeEnum.MEDIA,
             media: {
               type: TypeName.IMAGE_WITH_OVERLAY_TEXT,
-              src: '/media/denver-full.jpg',
+              src: '/media/brussels-full.jpg',
               ariaLabel: 'FIL Dev Summit',
-              link: '/FDS-3',
-              title: 'FDS-3: ETH Denver',
-              subtitle: 'February 29, 2024',
-              rightSubheading: 'Organized by Miwa',
+              link: '/FDS-4',
+              title: 'FDS-4: ETH Brussels',
+              subtitle: 'July 9, 2024',
+              rightSubheading: 'Organized by FilOz',
             },
           },
         ],
@@ -74,6 +74,19 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
         id: 'past-events',
         type: BlockTypeEnum.MEDIA_GRID,
         media: [
+          {
+            id: 'past-events',
+            type: BlockTypeEnum.MEDIA,
+            media: {
+              type: TypeName.IMAGE_WITH_OVERLAY_TEXT,
+              src: '/media/denver-full.jpg',
+              ariaLabel: 'FIL Dev Summit',
+              link: '/FDS-3',
+              title: 'FDS-3: Denver',
+              subtitle: 'February 29, 2024',
+              rightSubheading: 'Organized by Miwa',
+            },
+          },
           {
             id: 'past-events',
             type: BlockTypeEnum.MEDIA,
@@ -101,6 +114,65 @@ export const FILECOIN_DEV_SUMMIT_2023_PAGE_CONTENT = [
             },
           },
         ],
+      },
+    ],
+  },
+  {
+    id: 'denver',
+    backgroundColor: 'var(--color-white)',
+    direction: BlockDirectionEnum.COLUMN,
+    noGutter: 'no',
+    block: [
+      {
+        id: 'media',
+        type: BlockTypeEnum.MEDIA,
+        media: {
+          type: TypeName.IMAGE_TEXT_WITH_OVERFLOW,
+          heading: 'ETH Denver',
+          link: '/FDS-3',
+          description: 'February 29th, 2024',
+          smallDesc: 'Organized by Miwa',
+          image: {
+            alt: 'ETH Denver Fenruary 29th, 2024',
+            src: '/media/denver-full.jpg',
+          },
+        },
+      },
+    ],
+  },
+//  {
+//   id: 'recap-video',
+//    title: 'FDS-2: Iceland Recap',
+//    direction: 'column',
+//    block: [
+//      {
+//        id: 'media',
+//        type: BlockTypeEnum.MEDIA,
+//        media: {
+//          type: TypeName.MEDIA_VIDEO,
+//          src: 'https://www.youtube.com/watch?v=0tydpHgI_zE',
+//          ariaLabel: 'FIL Dev Summit 2023 - Iceland',
+//        },
+//      },
+//    ],
+//  },
+  {
+    id: 'denver',
+    direction: BlockDirectionEnum.COLUMN,
+    title: 'FDS-3: ETH Denver Schedule',
+    description: '',
+    cta: {
+      type: CallToActionVariantEnum.BUTTON,
+      textColor: 'white',
+      target: '_blank',
+      text: 'View the schedule in a list format',
+      buttonColor: 'linear-gradient(to right,#39C1CB, #006FEC)',
+      link: '/FDS-3/list',
+    },
+    block: [
+      {
+        type: BlockTypeEnum.SCHEDULE_ICELAND,
+        scheduleData: FIL_DEV_SUMMIT_ICELAND,
       },
     ],
   },
@@ -427,7 +499,7 @@ export const FILECOIN_DEV_SUMMIT_NAVIGATION_CONTENT = {
       text: 'Apply to Attend',
       buttonColor: 'linear-gradient(to right,#39C1CB, #006FEC)',
       textColor: 'white',
-      href: 'https://airtable.com/appEjnh5rpWMsjocb/shran7li4slfQSB04',
+      href: 'https://lu.ma/FDS-4',
       target: '_blank',
     },
   ],
